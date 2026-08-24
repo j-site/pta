@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="ja" class="no-js-ignored">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>株式会社Crastore｜プレビュー（WordPress貼り付け用HTMLの表示確認）</title>
+</head>
+<body>
+<!-- wp:html -->
+<!-- ============================================================
+  株式会社Crastore ホームページ（WordPress貼り付け用）／修正版
+  使い方: 固定ページの「カスタムHTML」ブロックにこのファイルの
+  中身を丸ごと貼り付けて公開し、設定→表示設定でホームページに指定
+  ※ <meta charset> は WordPress が <head> で出力済みのため削除しました
+     （<body> 内の meta タグはブラウザに無視されます）
+============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== WordPressテーマ側の要素を隠す ===== */
+#header-section, #above-header, .header-above-info, .main-mobile-menu,
+#footer-section, .copyright.footer-bottom, .scrollup,
+.breadcrumb-section, .breadcrumb-area, .page-title-area, .entry-title, .page-header {
+  display: none !important;
+}
+body.custom-background { background: #ffffff !important; }
+/* テーマの親コンテナ(#content > #post-section > .container > .row > .col-8)の
+   幅制限・中央寄せ・負マージンを解除して全幅化 */
+#content.renoval-content,
+#post-section.page-content,
+#post-section .container,
+#post-section .row,
+#post-section .row > [class*="col-"] {
+  max-width: none !important;
+  width: 100% !important;
+  flex: 0 0 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+html, body { overflow-x: hidden; }
+
+/* ===== 新サイト本体（#crastore-lp 内にスコープ） ===== */
+#crastore-lp, #crastore-lp * { box-sizing: border-box; margin: 0; padding: 0; }
+#crastore-lp {
+  --ink: #14171c;
+  --ink-soft: #3a4048;
+  --muted: #5f6773;          /* 修正: #6b7280 は白背景でコントラスト比4.2:1と不足のため濃く（4.9:1） */
+  --paper: #ffffff;
+  --bg-soft: #f5f6f8;
+  --accent: #f08300;
+  --accent-deep: #b35d00;    /* 修正: 白背景の文字色にも使うため 4.5:1 を満たす濃さへ */
+  --accent-hover: #d97400;   /* ボタンのホバー用（背景色専用） */
+  --line: #e5e7eb;
+  --radius: 14px;
+  --header-h: 64px;
+
+  width: 100%;
+
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+html { scroll-behavior: smooth; }
+#crastore-lp img { max-width: 100%; display: block; }
+#crastore-lp a { color: inherit; text-decoration: none; }
+#crastore-lp ul { list-style: none; }
+
+/* 修正: 固定ヘッダーの下に見出しが隠れるのを防ぐ（アンカーリンク対策） */
+#crastore-lp section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
+
+/* 修正: キーボード操作時のフォーカスリング（テーマ側でoutline:noneされていても効くよう明示） */
+#crastore-lp a:focus-visible,
+#crastore-lp button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+#crastore-lp .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* 修正: 視覚的に隠すが読み上げには残すユーティリティ */
+#crastore-lp .sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* ===== logo ===== */
+#crastore-lp .logotype {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  letter-spacing: .06em;
+  font-size: 22px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+#crastore-lp .logotype .s { color: var(--accent-deep); }
+
+/* ===== header ===== */
+#crastore-lp .cl-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+body.admin-bar #crastore-lp .cl-header { top: 32px; }
+@media screen and (max-width: 782px) {
+  body.admin-bar #crastore-lp .cl-header { top: 46px; }
+}
+#crastore-lp .header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: var(--header-h);
+}
+#crastore-lp .gnav { display: flex; align-items: center; gap: 28px; }
+#crastore-lp .gnav a { font-size: 14px; font-weight: 500; color: var(--ink-soft); transition: color .2s; }
+#crastore-lp .gnav a:hover { color: var(--accent-deep); }
+#crastore-lp .btn-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent-hover); color: #fff !important;
+  font-weight: 700; font-size: 14px;
+  padding: 10px 22px; border-radius: 999px;
+  transition: background .2s, transform .2s;
+}
+#crastore-lp .btn-cta:hover { background: var(--accent-deep); transform: translateY(-1px); }
+#crastore-lp .menu-btn { display: none; }
+
+/* ===== hero ===== */
+#crastore-lp .hero {
+  position: relative;
+  background: linear-gradient(160deg, #14171c 0%, #1d232c 55%, #232b36 100%);
+  color: #fff;
+  padding: 170px 0 110px;
+  overflow: hidden;
+}
+#crastore-lp .hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 80% at 70% 20%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 70% 20%, #000 30%, transparent 75%);
+}
+#crastore-lp .hero::after {
+  content: "";
+  position: absolute; right: -180px; top: -180px;
+  width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(240,131,0,.22), transparent 65%);
+}
+#crastore-lp .hero-inner { position: relative; z-index: 1; }
+#crastore-lp .hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 700; letter-spacing: .12em;
+  color: var(--accent);
+  border: 1px solid rgba(240,131,0,.5);
+  border-radius: 999px;
+  padding: 6px 18px;
+  margin-bottom: 28px;
+}
+#crastore-lp .hero h1 {
+  font-size: clamp(26px, 5.4vw, 54px);
+  font-weight: 900;
+  line-height: 1.45;
+  letter-spacing: .02em;
+  color: #fff;
+}
+#crastore-lp .hero h1 .accent { color: var(--accent); }
+#crastore-lp .hero-lead {
+  margin-top: 24px;
+  font-size: clamp(14px, 1.7vw, 17px);
+  color: #c6ccd4;
+  max-width: 620px;
+}
+#crastore-lp .hero-actions { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px; }
+#crastore-lp .btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--accent-hover); color: #fff !important;
+  font-weight: 700; font-size: 16px;
+  padding: 16px 38px; border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(240,131,0,.35);
+  transition: background .2s, transform .2s;
+}
+#crastore-lp .btn-primary:hover { background: var(--accent-deep); transform: translateY(-2px); }
+#crastore-lp .btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  color: #fff !important; font-weight: 700; font-size: 16px;
+  padding: 16px 38px; border-radius: 999px;
+  border: 1.5px solid rgba(255,255,255,.45);
+  transition: border-color .2s, background .2s;
+}
+#crastore-lp .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+#crastore-lp .hero-points {
+  margin-top: 56px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+#crastore-lp .hero-points li {
+  background: rgba(20,23,28,.72);
+  padding: 18px 22px;
+  font-size: 14px; font-weight: 500; color: #dbe0e6;
+  display: flex; align-items: center; gap: 10px;
+}
+#crastore-lp .hero-points .dot { color: var(--accent); font-weight: 900; }
+
+/* ===== sections ===== */
+#crastore-lp section { padding: 96px 0; }
+#crastore-lp .sec-label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800; font-size: 13px; letter-spacing: .22em;
+  color: var(--accent-deep);
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 14px;
+}
+#crastore-lp .sec-label::after { content: ""; width: 48px; height: 2px; background: var(--accent); }
+#crastore-lp .sec-title {
+  font-size: clamp(24px, 3.4vw, 36px);
+  font-weight: 900; line-height: 1.5; letter-spacing: .02em;
+  margin: 14px 0 18px;
+  color: inherit;
+}
+#crastore-lp .sec-lead { color: var(--muted); max-width: 680px; font-size: 15px; }
+
+/* strengths */
+#crastore-lp .strengths { background: var(--paper); }
+#crastore-lp .cards3 {
+  margin-top: 48px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+#crastore-lp .card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 34px 28px;
+  transition: box-shadow .25s, transform .25s, border-color .25s;
+}
+#crastore-lp .card:hover {
+  box-shadow: 0 16px 40px rgba(20,23,28,.10);
+  transform: translateY(-4px);
+  border-color: transparent;
+}
+#crastore-lp .card-num {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800; font-size: 13px; letter-spacing: .15em;
+  color: var(--accent-deep);
+}
+#crastore-lp .card h3 { font-size: 19px; font-weight: 700; margin: 10px 0 12px; color: inherit; }
+#crastore-lp .card p { font-size: 14px; color: var(--muted); }
+
+/* renovation banner */
+#crastore-lp .reno {
+  background: var(--ink); color: #fff;
+  position: relative; overflow: hidden;
+}
+#crastore-lp .reno::before {
+  content: "RENOVATION";
+  position: absolute; right: -10px; bottom: -28px;
+  font-family: "Montserrat", sans-serif; font-weight: 800;
+  font-size: clamp(60px, 11vw, 130px); letter-spacing: .04em;
+  color: rgba(255,255,255,.045);
+  pointer-events: none;
+}
+#crastore-lp .reno .sec-label { color: var(--accent); }
+#crastore-lp .reno .sec-title { color: #fff; }
+#crastore-lp .reno .sec-lead { color: #b9c0c9; }
+#crastore-lp .reno-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
+#crastore-lp .reno-list { display: grid; gap: 16px; }
+#crastore-lp .reno-list li {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.12);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 18px 22px;
+}
+#crastore-lp .reno-list strong { display: block; font-size: 15px; margin-bottom: 4px; }
+#crastore-lp .reno-list span { font-size: 13px; color: #aab2bc; }
+#crastore-lp .reno-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 28px; font-size: 14px; font-weight: 700; color: var(--accent) !important;
+}
+#crastore-lp .reno-link:hover { text-decoration: underline; }
+
+/* services */
+#crastore-lp .services { background: var(--bg-soft); }
+#crastore-lp .svc-grid {
+  margin-top: 48px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+#crastore-lp .svc {
+  position: relative;
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+  border: 1px solid var(--line);
+  transition: box-shadow .25s, transform .25s;
+  display: block;
+}
+#crastore-lp .svc:hover { box-shadow: 0 14px 36px rgba(20,23,28,.10); transform: translateY(-4px); }
+#crastore-lp .svc-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(240,131,0,.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 16px;
+}
+#crastore-lp .svc h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: inherit; }
+#crastore-lp .svc p { font-size: 13.5px; color: var(--muted); }
+/* 修正: HTMLに存在しない .arrow 要素向けのCSSを削除（デッドコード） */
+#crastore-lp .badge-main {
+  font-size: 11px; font-weight: 700; color: #fff;
+  background: var(--accent-deep);
+  border-radius: 4px; padding: 2px 8px;
+}
+
+/* flow */
+#crastore-lp .flow-grid {
+  margin-top: 48px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  counter-reset: step;
+}
+#crastore-lp .flow-step {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 22px 26px;
+}
+#crastore-lp .flow-step::before {
+  counter-increment: step;
+  content: "0" counter(step);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800; font-size: 26px;
+  color: var(--accent-deep);
+  display: block; margin-bottom: 10px;
+}
+#crastore-lp .flow-step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: inherit; }
+#crastore-lp .flow-step p { font-size: 13px; color: var(--muted); }
+#crastore-lp .flow-note { margin-top: 22px; font-size: 13px; color: var(--muted); }
+
+/* company */
+#crastore-lp .company { background: var(--bg-soft); }
+/* 修正: 狭い画面で表がはみ出さないよう横スクロールコンテナを追加 */
+#crastore-lp .table-scroll {
+  margin-top: 40px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius);
+}
+#crastore-lp .company-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  background: var(--paper);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+#crastore-lp .company-table th, #crastore-lp .company-table td {
+  text-align: left;
+  padding: 18px 24px;
+  font-size: 14.5px;
+  border-bottom: 1px solid var(--line);
+  border-left: none; border-right: none; border-top: none;
+  vertical-align: top;
+  color: var(--ink);   /* テーマのtd白文字指定に勝つため明示 */
+}
+#crastore-lp .company-table td { color: var(--ink-soft); }
+#crastore-lp .company-table a { color: var(--accent-deep); text-decoration: underline; }
+#crastore-lp .company-table tr:last-child th, #crastore-lp .company-table tr:last-child td { border-bottom: none; }
+#crastore-lp .company-table th { width: 200px; font-weight: 700; background: #fafbfc; white-space: nowrap; color: var(--ink); }
+
+/* contact */
+#crastore-lp .contact {
+  background: linear-gradient(160deg, #14171c 0%, #1f2630 100%);
+  color: #fff; text-align: center;
+}
+#crastore-lp .contact .sec-label { justify-content: center; color: var(--accent); }
+#crastore-lp .contact .sec-label::after { display: none; }
+#crastore-lp .contact .sec-title { color: #fff; }
+#crastore-lp .contact .sec-lead { margin: 0 auto; color: #b9c0c9; }
+#crastore-lp .contact-actions { margin-top: 40px; display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; }
+#crastore-lp .contact-tel {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
+  border: 1.5px solid rgba(255,255,255,.4);
+  border-radius: var(--radius);
+  padding: 16px 40px;
+  color: #fff !important;
+  transition: border-color .2s, background .2s;
+}
+#crastore-lp .contact-tel:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+#crastore-lp .contact-tel .num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 26px; letter-spacing: .04em; }
+#crastore-lp .contact-tel .hours { font-size: 12px; color: #aab2bc; }
+
+/* footer */
+#crastore-lp .cl-footer { background: #0e1115; color: #9aa2ac; padding: 44px 0; }
+#crastore-lp .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+#crastore-lp .cl-footer .logotype { color: #fff; font-size: 18px; }
+#crastore-lp .cl-footer .logotype .s { color: var(--accent); }
+#crastore-lp .footer-nav { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; }
+#crastore-lp .footer-nav a:hover { color: #fff; }
+#crastore-lp .footer-copy { font-size: 12px; margin-top: 6px; }
+
+/* reveal animation */
+#crastore-lp .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+#crastore-lp .reveal.on { opacity: 1; transform: none; }
+/* 修正: アニメーションを減らす設定のユーザーには動きを出さない */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  #crastore-lp .reveal { opacity: 1; transform: none; transition: none; }
+  #crastore-lp * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* 修正: 追従CTAは既定で非表示（狭い画面のみ後段のメディアクエリで表示） */
+#crastore-lp .sticky-cta { display: none; }
+
+/* ===== responsive ===== */
+@media (max-width: 880px) {
+  #crastore-lp .gnav {
+    position: fixed; top: var(--header-h); left: 0; right: 0;
+    background: #fff;
+    flex-direction: column; align-items: stretch; gap: 0;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 20px 40px rgba(20,23,28,.12);
+    display: none;
+    z-index: 9998;
+    max-height: calc(100vh - var(--header-h)); /* 修正: 項目が増えても画面外に出ないように */
+    overflow-y: auto;
+  }
+  body.admin-bar #crastore-lp .gnav { top: 110px; max-height: calc(100vh - 110px); }
+  #crastore-lp .gnav.open { display: flex; }
+  #crastore-lp .gnav a { padding: 16px 24px; border-top: 1px solid var(--line); font-size: 15px; }
+  #crastore-lp .gnav .btn-cta { margin: 16px 24px; justify-content: center; border-radius: 10px; }
+  #crastore-lp .menu-btn {
+    display: flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 44px; height: 44px; padding: 10px;
+    background: none; border: none; cursor: pointer;
+  }
+  #crastore-lp .menu-btn span { height: 2px; background: var(--ink); border-radius: 2px; transition: transform .25s, opacity .25s; display: block; width: 100%; }
+  #crastore-lp .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  #crastore-lp .menu-btn.open span:nth-child(2) { opacity: 0; }
+  #crastore-lp .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  #crastore-lp .hero { padding: 130px 0 80px; }
+  #crastore-lp .hero-points { grid-template-columns: 1fr; }
+  #crastore-lp section { padding: 72px 0; }
+  #crastore-lp .cards3, #crastore-lp .svc-grid { grid-template-columns: 1fr; }
+  #crastore-lp .reno-grid { grid-template-columns: 1fr; gap: 40px; }
+  #crastore-lp .flow-grid { grid-template-columns: 1fr 1fr; }
+  #crastore-lp .company-table th { width: 120px; }
+  #crastore-lp .footer-inner { flex-direction: column; align-items: flex-start; }
+
+  /* 修正: スマホでヘッダーからCTAが消えていたので、常時表示の追従ボタンを追加 */
+  #crastore-lp .sticky-cta {
+    display: block;
+    position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 9997;
+    background: var(--accent-hover); color: #fff !important;
+    text-align: center; font-weight: 700; font-size: 15px;
+    padding: 15px 20px; border-radius: 999px;
+    box-shadow: 0 10px 28px rgba(20,23,28,.28);
+  }
+}
+@media (max-width: 480px) {
+  #crastore-lp .flow-grid { grid-template-columns: 1fr; }
+  #crastore-lp .hero-actions .btn-primary, #crastore-lp .hero-actions .btn-ghost { width: 100%; }
+  #crastore-lp .cl-footer { padding-bottom: 92px; } /* 追従CTAとの重なり回避 */
+}
+</style>
+
+<!-- 修正: JavaScript無効時に .reveal が透明のまま残らないようにする -->
+<noscript><style>#crastore-lp .reveal{opacity:1;transform:none;}</style></noscript>
+
+<div id="crastore-lp">
+
+<header class="cl-header">
+  <div class="wrap header-inner">
+    <a href="https://crastore.xyz/" class="logotype" aria-label="株式会社Crastore ホーム">CRA<span class="s">S</span>TORE</a>
+    <button class="menu-btn" id="clMenuBtn" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="clGnav"><span></span><span></span><span></span></button>
+    <nav class="gnav" id="clGnav" aria-label="メインメニュー">
+      <a href="#strength">強み</a>
+      <a href="#renovation">改修工事</a>
+      <a href="#service">サービス</a>
+      <a href="#flow">ご依頼の流れ</a>
+      <a href="#company">会社概要</a>
+      <a class="btn-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">無料相談はこちら<span class="sr-only">（別ウィンドウで開きます）</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero" id="top" aria-labelledby="heroTitle">
+    <div class="wrap hero-inner">
+      <p class="hero-tag">大阪・船場の建設会社</p>
+      <h1 id="heroTitle">皆が表現できないものを、<br>わたしたちが<span class="accent">現実</span>にする。</h1>
+      <p class="hero-lead">
+        「ここ、直せるのかな」——その一言から始めてください。
+        Crastore(クラストア)は、住宅・店舗・賃貸物件の<strong>改修工事を得意とする大阪の建設会社</strong>。
+        小さな修繕から全面リノベーションまで、ご相談・お見積りは無料です。
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">無料で相談する<span class="sr-only">（別ウィンドウで開きます）</span></a>
+        <a class="btn-ghost" href="#service">サービスを見る</a>
+      </div>
+      <ul class="hero-points">
+        <li><span class="dot" aria-hidden="true">●</span>ご相談・お見積り 無料</li>
+        <li><span class="dot" aria-hidden="true">●</span>災害時の保険申請工事に対応</li>
+        <li><span class="dot" aria-hidden="true">●</span>適格請求書発行事業者</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Strengths -->
+  <section class="strengths" id="strength" aria-labelledby="strengthTitle">
+    <div class="wrap">
+      <p class="sec-label">Strength</p>
+      <h2 class="sec-title" id="strengthTitle">Crastoreが選ばれる理由</h2>
+      <p class="sec-lead">新しいやり方と、確かな施工。どちらか一方では、いい工事になりません。</p>
+      <div class="cards3">
+        <div class="card reveal">
+          <p class="card-num">01</p>
+          <h3>必要な工事だけを、提案する</h3>
+          <p>水まわり・内装・外装・原状回復まで幅広く対応。現地を見て、いま本当に必要な工事だけをご提案します。過剰な工事はお勧めしません——それが結局、いちばん信頼につながるからです。</p>
+        </div>
+        <div class="card reveal">
+          <p class="card-num">02</p>
+          <h3>速くて、ガラス張り</h3>
+          <p>見積書・請求書は完全デジタル。スマホでいつでも確認でき、何にいくらかかるかが一目でわかります。「よくわからないまま契約」を、この業界からなくしたい。</p>
+        </div>
+        <div class="card reveal">
+          <p class="card-num">03</p>
+          <h3>窓口は、ひとつでいい</h3>
+          <p>解体から仕上げまで、多工種の職人ネットワークでワンストップ。複数の業者に電話して、日程を調整して……という手間は、もう必要ありません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Renovation -->
+  <section class="reno" id="renovation" aria-labelledby="renoTitle">
+    <div class="wrap reno-grid">
+      <div class="reveal">
+        <p class="sec-label">Renovation</p>
+        <h2 class="sec-title" id="renoTitle">改修は「早め」が、<br>いちばんの節約です。</h2>
+        <p class="sec-lead">
+          外壁の小さなひび、天井の雨染み、水まわりの違和感。
+          実は「まだ大丈夫」が、いちばん高くつきます。劣化は連鎖し、修繕費は数倍に膨らむからです。
+          気になったその日に、写真を一枚送ってください。それだけでご相談が始められます。
+        </p>
+        <a class="reno-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">まずは無料で相談する →<span class="sr-only">（別ウィンドウで開きます）</span></a>
+      </div>
+      <ul class="reno-list reveal">
+        <li><strong>劣化の連鎖を止める</strong><span>小さなひび割れ・雨漏りも、早期対応なら最小限の工事で済みます。</span></li>
+        <li><strong>修繕コストを大幅に抑える</strong><span>軽度なら数万円〜の工事が、放置すると数百万円になることも。</span></li>
+        <li><strong>安全性と資産価値を守る</strong><span>耐震性・断熱性を保ち、売却や賃貸時の評価低下を防ぎます。</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="service" aria-labelledby="serviceTitle">
+    <div class="wrap">
+      <p class="sec-label">Service</p>
+      <h2 class="sec-title" id="serviceTitle">サービス</h2>
+      <p class="sec-lead">工事のことも、工事のまわりのことも。「これは頼めるのかな?」と迷ったら、まず聞いてください。</p>
+      <div class="svc-grid">
+        <div class="svc reveal">
+          <div class="svc-icon" aria-hidden="true">🛠️</div>
+          <h3>改修・リフォーム工事 <span class="badge-main">得意分野</span></h3>
+          <p>内装・外装・水まわり・原状回復など、住宅から店舗まで幅広い工種に対応します。</p>
+        </div>
+        <div class="svc reveal">
+          <div class="svc-icon" aria-hidden="true">🛡️</div>
+          <h3>災害時保険を活用した工事</h3>
+          <p>台風・地震などの被害は、火災保険等を利用した修繕工事に対応。申請からサポートします。</p>
+        </div>
+        <div class="svc reveal">
+          <div class="svc-icon" aria-hidden="true">🏢</div>
+          <h3>賃貸物件管理</h3>
+          <p>オーナー様向けに、物件の維持管理から原状回復・バリューアップ工事までを一括対応。</p>
+        </div>
+        <div class="svc reveal">
+          <div class="svc-icon" aria-hidden="true">🎫</div>
+          <h3>工事チケット</h3>
+          <p>ちょっとした工事を、もっと手軽に不安なく。事前購入型のチケットで簡単工事を依頼できます。</p>
+        </div>
+        <div class="svc reveal">
+          <div class="svc-icon" aria-hidden="true">📦</div>
+          <h3>取り扱い商品の販売</h3>
+          <p>工事を伴わない商材のみの販売にも対応。建材・設備をお求めやすくご提供します。</p>
+        </div>
+        <div class="svc reveal">
+          <div class="svc-icon" aria-hidden="true">✅</div>
+          <h3>NINSHO取得支援</h3>
+          <p>実在証明認証マーク「NINSHO」の取得をサポート。事業の信頼性向上に役立ちます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow -->
+  <section id="flow" aria-labelledby="flowTitle">
+    <div class="wrap">
+      <p class="sec-label">Flow</p>
+      <h2 class="sec-title" id="flowTitle">ご依頼の流れ</h2>
+      <div class="flow-grid">
+        <div class="flow-step reveal">
+          <h3>ご相談</h3>
+          <p>フォームまたはお電話でお気軽に。気になる箇所の写真を一枚送っていただくだけでも大丈夫です。</p>
+        </div>
+        <div class="flow-step reveal">
+          <h3>現地調査・お見積り</h3>
+          <p>現地を確認し、必要な工事だけを盛り込んだお見積りをご提示。<strong>ここまですべて無料</strong>。納得できなければ断っていただいて構いません。</p>
+        </div>
+        <div class="flow-step reveal">
+          <h3>ご契約・施工</h3>
+          <p>内容にご納得いただいてから着工します。ご近所への挨拶・配慮と安全管理は、仕上がりと同じくらい大切にしています。</p>
+        </div>
+        <div class="flow-step reveal">
+          <h3>お引き渡し</h3>
+          <p>仕上がりを一緒にご確認いただいてお引き渡し。「ついでにここも」という施工後のご相談も歓迎です。</p>
+        </div>
+      </div>
+      <p class="flow-note">※ 災害時保険を活用する工事の場合は、保険申請の流れも併せてご案内します。</p>
+    </div>
+  </section>
+
+  <!-- Company -->
+  <section class="company" id="company" aria-labelledby="companyTitle">
+    <div class="wrap">
+      <p class="sec-label">Company</p>
+      <h2 class="sec-title" id="companyTitle">会社概要</h2>
+      <div class="table-scroll reveal">
+        <table class="company-table">
+          <tbody>
+            <tr><th scope="row">会社名</th><td>株式会社Crastore(クラストア)</td></tr>
+            <tr><th scope="row">所在地</th><td>〒541-0057 大阪市中央区北久宝寺町2-6-10-404</td></tr>
+            <tr><th scope="row">TEL</th><td><a href="tel:05037003996">050-3700-3996</a></td></tr>
+            <tr><th scope="row">営業時間</th><td>9:00〜17:00</td></tr>
+            <tr><th scope="row">事業内容</th><td>改修・リフォーム工事／各種建設工事／賃貸物件管理／建材・設備の販売／災害時保険を活用した修繕工事</td></tr>
+            <tr><th scope="row">登録</th><td>適格請求書発行事業者(登録番号 T9122001026672)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact" aria-labelledby="contactTitle">
+    <div class="wrap">
+      <p class="sec-label">Contact</p>
+      <h2 class="sec-title" id="contactTitle">「これって直る?」から、始めましょう。</h2>
+      <p class="sec-lead">質問だけでも、写真一枚だけでも大歓迎。ご相談・現地調査・お見積りはすべて無料です。<br>しつこい営業は一切しません。</p>
+      <div class="contact-actions">
+        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">お問い合わせフォームへ<span class="sr-only">（別ウィンドウで開きます）</span></a>
+        <a class="contact-tel" href="tel:05037003996">
+          <span class="num">050-3700-3996</span>
+          <span class="hours">受付 9:00〜17:00</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="cl-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="logotype">CRA<span class="s">S</span>TORE</p>
+      <p class="footer-copy">&copy; <span id="clYear">2026</span> 株式会社Crastore</p>
+    </div>
+    <nav class="footer-nav" aria-label="フッターメニュー">
+      <a href="#strength">強み</a>
+      <a href="#renovation">改修工事</a>
+      <a href="#service">サービス</a>
+      <a href="#flow">ご依頼の流れ</a>
+      <a href="#company">会社概要</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">お問い合わせ</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- 修正: スマホでヘッダーのCTAが隠れるため、追従型の問い合わせボタンを追加 -->
+<a class="sticky-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">無料で相談する（お問い合わせフォーム）</a>
+
+</div>
+
+<!-- 修正: 検索結果での表示を整えるための構造化データ（Google推奨） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "株式会社Crastore",
+  "alternateName": "株式会社クラストア",
+  "url": "https://crastore.xyz/",
+  "telephone": "+81-50-3700-3996",
+  "description": "大阪・船場の建設会社。住宅・店舗・賃貸物件の改修工事を得意とし、小さな修繕から全面リノベーションまで対応します。ご相談・現地調査・お見積りは無料です。",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "北久宝寺町2-6-10-404",
+    "addressLocality": "大阪市中央区",
+    "addressRegion": "大阪府",
+    "postalCode": "541-0057",
+    "addressCountry": "JP"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "09:00",
+    "closes": "17:00"
+  }],
+  "areaServed": { "@type": "AdministrativeArea", "name": "大阪府および近隣府県" }
+}
+</script>
+
+<script>
+(function () {
+  var lp = document.getElementById('crastore-lp');
+  if (!lp) return;
+
+  // mobile menu
+  var menuBtn = document.getElementById('clMenuBtn');
+  var gnav = document.getElementById('clGnav');
+  function closeMenu() {
+    if (!menuBtn || !gnav) return;
+    menuBtn.classList.remove('open');
+    gnav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'メニューを開く');
+  }
+  if (menuBtn && gnav) {
+    menuBtn.addEventListener('click', function () {
+      var willOpen = !gnav.classList.contains('open');
+      menuBtn.classList.toggle('open', willOpen);
+      gnav.classList.toggle('open', willOpen);
+      // 修正: 開閉状態を支援技術に伝える
+      menuBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', willOpen ? 'メニューを閉じる' : 'メニューを開く');
+    });
+    gnav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) closeMenu();   // 修正: リンク内のspanをクリックしても閉じるように
+    });
+    // 修正: メニュー外のクリック / Escキー / 画面拡大で閉じる
+    document.addEventListener('click', function (e) {
+      if (!gnav.classList.contains('open')) return;
+      if (gnav.contains(e.target) || menuBtn.contains(e.target)) return;
+      closeMenu();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 880) closeMenu();
+    });
+  }
+
+  // 修正: 著作権表記の年を自動更新（毎年の書き換えが不要に）
+  var y = document.getElementById('clYear');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // scroll reveal
+  var reveals = lp.querySelectorAll('.reveal');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function showAll() {
+    Array.prototype.forEach.call(reveals, function (el) { el.classList.add('on'); });
+  }
+  if (reduce || !('IntersectionObserver' in window)) {
+    showAll();
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('on'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+    Array.prototype.forEach.call(reveals, function (el) { io.observe(el); });
+    // 保険: 何らかの理由で発火しなかった要素も必ず表示する
+    setTimeout(showAll, 1500);
+  }
+})();
+</script>
+<!-- /wp:html -->
+
+</body>
+</html>
