@@ -1,10 +1,17 @@
 <!-- wp:html -->
 <!-- ============================================================
-  株式会社Crastore ホームページ（WordPress貼り付け用）／修正版
+  株式会社Crastore ホームページ（WordPress貼り付け用）
+  「見やすさ」「頼みやすさ」を基準に再構成した版
+  訴求の軸: ①火災保険を使った修繕に強い ②他社で断られた工事に対応
+
   使い方: 固定ページの「カスタムHTML」ブロックにこのファイルの
   中身を丸ごと貼り付けて公開し、設定→表示設定でホームページに指定
-  ※ <meta charset> は WordPress が <head> で出力済みのため削除しました
-     （<body> 内の meta タグはブラウザに無視されます）
+
+  ▼ 公開前に確認・記入をおすすめする箇所（ファイル内を「要確認」で検索）
+    1. 対応エリアの表記
+    2. 費用の目安（コメントアウト中。金額を入れて有効化すると効果大）
+    3. LINEの友だち追加URL（コメントアウト中）
+    4. 火災保険セクションの実績件数（コメントアウト中）
 ============================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,8 +24,7 @@
   display: none !important;
 }
 body.custom-background { background: #ffffff !important; }
-/* テーマの親コンテナ(#content > #post-section > .container > .row > .col-8)の
-   幅制限・中央寄せ・負マージンを解除して全幅化 */
+/* テーマの親コンテナの幅制限・中央寄せ・負マージンを解除して全幅化 */
 #content.renoval-content,
 #post-section.page-content,
 #post-section .container,
@@ -32,49 +38,43 @@ body.custom-background { background: #ffffff !important; }
 }
 html, body { overflow-x: hidden; }
 
-/* ===== 新サイト本体（#crastore-lp 内にスコープ） ===== */
+/* ===== 本体（#crastore-lp 内にスコープ） ===== */
 #crastore-lp, #crastore-lp * { box-sizing: border-box; margin: 0; padding: 0; }
 #crastore-lp {
   --ink: #14171c;
-  --ink-soft: #3a4048;
-  --muted: #5f6773;          /* 修正: #6b7280 は白背景でコントラスト比4.2:1と不足のため濃く（4.9:1） */
+  --ink-soft: #333a43;
+  --muted: #5a626d;
   --paper: #ffffff;
-  --bg-soft: #f5f6f8;
-  --accent: #f08300;
-  --accent-deep: #b35d00;    /* 修正: 白背景の文字色にも使うため 4.5:1 を満たす濃さへ */
-  --accent-hover: #d97400;   /* ボタンのホバー用（背景色専用） */
-  --line: #e5e7eb;
+  --bg-soft: #f4f6f8;
+  --accent: #f08300;        /* 濃色背景の文字・装飾用 */
+  --accent-deep: #b35d00;   /* 白背景の文字用（コントラスト比4.5:1以上） */
+  --accent-btn: #d97400;    /* ボタン背景用 */
+  --accent-btn-hover: #b35d00;
+  --line: #e3e7ec;
   --radius: 14px;
-  --header-h: 64px;
+  --header-h: 68px;
 
   width: 100%;
-
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
   color: var(--ink);
   background: var(--paper);
-  line-height: 1.8;
-  font-size: 15px;
+  line-height: 1.9;
+  font-size: 16px;   /* 見やすさ: 15px → 16px */
   -webkit-font-smoothing: antialiased;
 }
 html { scroll-behavior: smooth; }
 #crastore-lp img { max-width: 100%; display: block; }
 #crastore-lp a { color: inherit; text-decoration: none; }
-#crastore-lp ul { list-style: none; }
-
-/* 修正: 固定ヘッダーの下に見出しが隠れるのを防ぐ（アンカーリンク対策） */
+#crastore-lp ul, #crastore-lp ol { list-style: none; }
 #crastore-lp section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
-
-/* 修正: キーボード操作時のフォーカスリング（テーマ側でoutline:noneされていても効くよう明示） */
 #crastore-lp a:focus-visible,
-#crastore-lp button:focus-visible {
-  outline: 3px solid var(--accent);
+#crastore-lp button:focus-visible,
+#crastore-lp summary:focus-visible {
+  outline: 3px solid var(--accent-deep);
   outline-offset: 3px;
   border-radius: 4px;
 }
-
 #crastore-lp .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-
-/* 修正: 視覚的に隠すが読み上げには残すユーティリティ */
 #crastore-lp .sr-only {
   position: absolute; width: 1px; height: 1px;
   padding: 0; overflow: hidden; clip: rect(0 0 0 0);
@@ -84,54 +84,52 @@ html { scroll-behavior: smooth; }
 /* ===== logo ===== */
 #crastore-lp .logotype {
   font-family: "Montserrat", sans-serif;
-  font-weight: 800;
-  letter-spacing: .06em;
-  font-size: 22px;
-  color: var(--ink);
-  white-space: nowrap;
+  font-weight: 800; letter-spacing: .06em;
+  font-size: 22px; color: var(--ink); white-space: nowrap; line-height: 1.2;
 }
 #crastore-lp .logotype .s { color: var(--accent-deep); }
 
 /* ===== header ===== */
 #crastore-lp .cl-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
 body.admin-bar #crastore-lp .cl-header { top: 32px; }
-@media screen and (max-width: 782px) {
-  body.admin-bar #crastore-lp .cl-header { top: 46px; }
-}
+@media screen and (max-width: 782px) { body.admin-bar #crastore-lp .cl-header { top: 46px; } }
 #crastore-lp .header-inner {
   display: flex; align-items: center; justify-content: space-between;
-  height: var(--header-h);
+  gap: 16px; height: var(--header-h);
 }
-#crastore-lp .gnav { display: flex; align-items: center; gap: 28px; }
-#crastore-lp .gnav a { font-size: 14px; font-weight: 500; color: var(--ink-soft); transition: color .2s; }
+#crastore-lp .gnav { display: flex; align-items: center; gap: 22px; }
+#crastore-lp .gnav a { font-size: 15px; font-weight: 500; color: var(--ink-soft); transition: color .2s; white-space: nowrap; }
 #crastore-lp .gnav a:hover { color: var(--accent-deep); }
+/* 頼みやすさ: PCヘッダーに電話番号を常設 */
+#crastore-lp .head-tel { display: flex; flex-direction: column; line-height: 1.35; text-align: right; }
+#crastore-lp .head-tel .num {
+  font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 20px;
+  color: var(--ink); letter-spacing: .02em;
+}
+#crastore-lp .head-tel .sub { font-size: 11px; color: var(--muted); }
 #crastore-lp .btn-cta {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--accent-hover); color: #fff !important;
-  font-weight: 700; font-size: 14px;
-  padding: 10px 22px; border-radius: 999px;
+  background: var(--accent-btn); color: #fff !important;
+  font-weight: 700; font-size: 15px;
+  padding: 12px 24px; border-radius: 999px;
   transition: background .2s, transform .2s;
 }
-#crastore-lp .btn-cta:hover { background: var(--accent-deep); transform: translateY(-1px); }
+#crastore-lp .btn-cta:hover { background: var(--accent-btn-hover); transform: translateY(-1px); }
 #crastore-lp .menu-btn { display: none; }
 
 /* ===== hero ===== */
 #crastore-lp .hero {
   position: relative;
   background: linear-gradient(160deg, #14171c 0%, #1d232c 55%, #232b36 100%);
-  color: #fff;
-  padding: 170px 0 110px;
-  overflow: hidden;
+  color: #fff; padding: 150px 0 92px; overflow: hidden;
 }
 #crastore-lp .hero::before {
-  content: "";
-  position: absolute; inset: 0;
+  content: ""; position: absolute; inset: 0;
   background-image:
     linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
@@ -140,8 +138,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   -webkit-mask-image: radial-gradient(ellipse 90% 80% at 70% 20%, #000 30%, transparent 75%);
 }
 #crastore-lp .hero::after {
-  content: "";
-  position: absolute; right: -180px; top: -180px;
+  content: ""; position: absolute; right: -180px; top: -180px;
   width: 520px; height: 520px; border-radius: 50%;
   background: radial-gradient(circle, rgba(240,131,0,.22), transparent 65%);
 }
@@ -150,151 +147,212 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   display: inline-flex; align-items: center; gap: 10px;
   font-size: 13px; font-weight: 700; letter-spacing: .12em;
   color: var(--accent);
-  border: 1px solid rgba(240,131,0,.5);
-  border-radius: 999px;
-  padding: 6px 18px;
-  margin-bottom: 28px;
+  border: 1px solid rgba(240,131,0,.5); border-radius: 999px;
+  padding: 6px 18px; margin-bottom: 24px;
 }
 #crastore-lp .hero h1 {
-  font-size: clamp(26px, 5.4vw, 54px);
-  font-weight: 900;
-  line-height: 1.45;
-  letter-spacing: .02em;
-  color: #fff;
+  font-size: clamp(24px, 4.4vw, 44px);   /* 狭い画面で「まで。」だけが行に残らない大きさ */
+  font-weight: 900; line-height: 1.5; letter-spacing: .01em; color: #fff;
 }
 #crastore-lp .hero h1 .accent { color: var(--accent); }
 #crastore-lp .hero-lead {
-  margin-top: 24px;
-  font-size: clamp(14px, 1.7vw, 17px);
-  color: #c6ccd4;
-  max-width: 620px;
+  margin-top: 22px; font-size: clamp(15px, 1.6vw, 18px);
+  color: #ccd2da; max-width: 31em;
 }
-#crastore-lp .hero-actions { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px; }
+#crastore-lp .hero-slogan {
+  margin-top: 24px; padding-left: 16px;
+  border-left: 3px solid rgba(240,131,0,.6);
+  font-size: 14px; color: #a8b0ba; line-height: 1.8;
+}
+#crastore-lp .hero-actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 #crastore-lp .btn-primary {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  background: var(--accent-hover); color: #fff !important;
-  font-weight: 700; font-size: 16px;
-  padding: 16px 38px; border-radius: 999px;
-  box-shadow: 0 8px 24px rgba(240,131,0,.35);
+  background: var(--accent-btn); color: #fff !important;
+  font-weight: 700; font-size: 17px;
+  padding: 18px 40px; border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(240,131,0,.32);
   transition: background .2s, transform .2s;
 }
-#crastore-lp .btn-primary:hover { background: var(--accent-deep); transform: translateY(-2px); }
-#crastore-lp .btn-ghost {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  color: #fff !important; font-weight: 700; font-size: 16px;
-  padding: 16px 38px; border-radius: 999px;
+#crastore-lp .btn-primary:hover { background: var(--accent-btn-hover); transform: translateY(-2px); }
+#crastore-lp .btn-tel-hero {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 0;
+  color: #fff !important; padding: 12px 32px; border-radius: var(--radius);
   border: 1.5px solid rgba(255,255,255,.45);
-  transition: border-color .2s, background .2s;
+  transition: border-color .2s, background .2s; line-height: 1.35;
 }
-#crastore-lp .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+#crastore-lp .btn-tel-hero:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+#crastore-lp .btn-tel-hero .num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 24px; letter-spacing: .03em; }
+#crastore-lp .btn-tel-hero .sub { font-size: 12px; color: #b4bcc6; }
+#crastore-lp .cta-note {
+  margin-top: 16px; font-size: 14px; color: #b4bcc6;
+  display: flex; flex-wrap: wrap; gap: 6px 18px;
+}
+#crastore-lp .cta-note span { display: inline-flex; align-items: center; gap: 6px; }
+#crastore-lp .cta-note .ck { color: var(--accent); font-weight: 900; }
 #crastore-lp .hero-points {
-  margin-top: 56px;
+  margin-top: 44px;
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
   background: rgba(255,255,255,.14);
   border: 1px solid rgba(255,255,255,.14);
-  border-radius: var(--radius);
-  overflow: hidden;
+  border-radius: var(--radius); overflow: hidden;
 }
 #crastore-lp .hero-points li {
-  background: rgba(20,23,28,.72);
-  padding: 18px 22px;
-  font-size: 14px; font-weight: 500; color: #dbe0e6;
+  background: rgba(20,23,28,.72); padding: 18px 22px;
+  font-size: 15px; font-weight: 500; color: #dde2e8;
   display: flex; align-items: center; gap: 10px;
 }
-#crastore-lp .hero-points .dot { color: var(--accent); font-weight: 900; }
+#crastore-lp .hero-points .dot { color: var(--accent); font-weight: 900; flex: none; }
 
 /* ===== sections ===== */
-#crastore-lp section { padding: 96px 0; }
+#crastore-lp section { padding: 88px 0; }
 #crastore-lp .sec-label {
   font-family: "Montserrat", sans-serif;
   font-weight: 800; font-size: 13px; letter-spacing: .22em;
-  color: var(--accent-deep);
-  text-transform: uppercase;
+  color: var(--accent-deep); text-transform: uppercase;
   display: flex; align-items: center; gap: 14px;
 }
 #crastore-lp .sec-label::after { content: ""; width: 48px; height: 2px; background: var(--accent); }
 #crastore-lp .sec-title {
-  font-size: clamp(24px, 3.4vw, 36px);
-  font-weight: 900; line-height: 1.5; letter-spacing: .02em;
-  margin: 14px 0 18px;
-  color: inherit;
+  font-size: clamp(25px, 3.2vw, 35px);
+  font-weight: 900; line-height: 1.55; letter-spacing: .02em;
+  margin: 14px 0 18px; color: inherit;
 }
-#crastore-lp .sec-lead { color: var(--muted); max-width: 680px; font-size: 15px; }
+#crastore-lp .sec-lead { color: var(--muted); max-width: 34em; font-size: 16px; }
+
+/* ===== 他社で断られた工事 ===== */
+#crastore-lp .rescue { background: var(--paper); }
+#crastore-lp .rescue-voices {
+  margin-top: 36px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+#crastore-lp .voice {
+  background: var(--bg-soft); border-radius: var(--radius);
+  padding: 22px 24px; position: relative;
+  font-size: 15.5px; font-weight: 500; color: var(--ink-soft); line-height: 1.75;
+}
+#crastore-lp .voice::after {
+  content: ""; position: absolute; left: 32px; bottom: -10px;
+  width: 20px; height: 20px; background: var(--bg-soft);
+  transform: rotate(45deg);
+}
+#crastore-lp .voice .who { display: block; margin-top: 8px; font-size: 13px; color: var(--muted); font-weight: 400; }
+#crastore-lp .rescue-answer {
+  margin-top: 40px; background: var(--ink); color: #fff;
+  border-radius: var(--radius); padding: 40px 44px;
+}
+#crastore-lp .rescue-answer h3 {
+  font-size: clamp(20px, 2.6vw, 28px); font-weight: 900; line-height: 1.6; color: #fff;
+}
+#crastore-lp .rescue-answer h3 .accent { color: var(--accent); }
+#crastore-lp .rescue-answer > p { margin-top: 16px; color: #c0c7d0; font-size: 16px; max-width: 42em; }
+#crastore-lp .rescue-reasons { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+#crastore-lp .rescue-reasons li {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13);
+  border-radius: 12px; padding: 20px 22px;
+}
+#crastore-lp .rescue-reasons .ng {
+  display: inline-block; font-size: 13px; color: #9aa2ac;
+  padding-bottom: 8px; margin-bottom: 10px;
+  border-bottom: 1px dashed rgba(255,255,255,.2); width: 100%;
+}
+#crastore-lp .rescue-reasons strong { display: block; font-size: 16.5px; color: var(--accent); margin-bottom: 6px; }
+#crastore-lp .rescue-reasons span.d { font-size: 14.5px; color: #c7ced6; line-height: 1.75; }
+
+/* ===== 火災保険 ===== */
+#crastore-lp .insurance { background: var(--bg-soft); }
+#crastore-lp .ins-grid { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+#crastore-lp .ins-card {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 30px 30px;
+}
+#crastore-lp .ins-card h3 {
+  font-size: 19px; font-weight: 800; margin-bottom: 16px; color: inherit;
+  display: flex; align-items: center; gap: 10px; line-height: 1.6;
+}
+#crastore-lp .ins-card h3 .ic { font-size: 24px; flex: none; }
+#crastore-lp .ins-targets { display: flex; flex-wrap: wrap; gap: 10px; }
+#crastore-lp .ins-targets li {
+  background: rgba(240,131,0,.10); color: var(--accent-deep);
+  border: 1px solid rgba(240,131,0,.3); border-radius: 999px;
+  padding: 7px 16px; font-size: 14.5px; font-weight: 700;
+}
+#crastore-lp .ins-support { display: grid; gap: 14px; }
+#crastore-lp .ins-support li { display: flex; gap: 12px; font-size: 15.5px; line-height: 1.75; }
+#crastore-lp .ins-support .ck { color: var(--accent-deep); font-weight: 900; flex: none; }
+#crastore-lp .notice {
+  margin-top: 30px; background: var(--paper);
+  border: 1px solid var(--line); border-left: 4px solid #8a93a0;
+  border-radius: 10px; padding: 22px 26px;
+}
+#crastore-lp .notice h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+#crastore-lp .notice p { font-size: 14.5px; color: var(--muted); line-height: 1.85; }
+#crastore-lp .notice p + p { margin-top: 8px; }
+
+/* ===== 相談例 ===== */
+#crastore-lp .cases { background: var(--paper); }
+#crastore-lp .case-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+#crastore-lp .case {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 12px; padding: 20px 18px;
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 15px; font-weight: 500; line-height: 1.7;
+}
+#crastore-lp .case .ic { font-size: 22px; line-height: 1.3; flex: none; }
+#crastore-lp .case-foot {
+  margin-top: 28px; background: var(--bg-soft);
+  border: 2px solid var(--accent); border-radius: var(--radius);
+  padding: 24px 28px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px;
+}
+#crastore-lp .case-foot p { font-size: 17px; font-weight: 700; line-height: 1.7; }
+#crastore-lp .case-foot p small { display: block; font-size: 14px; font-weight: 400; color: var(--muted); margin-top: 4px; }
 
 /* strengths */
-#crastore-lp .strengths { background: var(--paper); }
-#crastore-lp .cards3 {
-  margin-top: 48px;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-}
+#crastore-lp .strengths { background: var(--bg-soft); }
+#crastore-lp .cards3 { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 #crastore-lp .card {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 34px 28px;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 32px 26px;
   transition: box-shadow .25s, transform .25s, border-color .25s;
 }
-#crastore-lp .card:hover {
-  box-shadow: 0 16px 40px rgba(20,23,28,.10);
-  transform: translateY(-4px);
-  border-color: transparent;
-}
-#crastore-lp .card-num {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 800; font-size: 13px; letter-spacing: .15em;
-  color: var(--accent-deep);
-}
-#crastore-lp .card h3 { font-size: 19px; font-weight: 700; margin: 10px 0 12px; color: inherit; }
-#crastore-lp .card p { font-size: 14px; color: var(--muted); }
+#crastore-lp .card:hover { box-shadow: 0 16px 40px rgba(20,23,28,.10); transform: translateY(-4px); border-color: transparent; }
+#crastore-lp .card-num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 13px; letter-spacing: .15em; color: var(--accent-deep); }
+#crastore-lp .card h3 { font-size: 19px; font-weight: 700; margin: 10px 0 12px; color: inherit; line-height: 1.6; }
+#crastore-lp .card p { font-size: 15px; color: var(--muted); }
 
 /* renovation banner */
-#crastore-lp .reno {
-  background: var(--ink); color: #fff;
-  position: relative; overflow: hidden;
-}
+#crastore-lp .reno { background: var(--ink); color: #fff; position: relative; overflow: hidden; }
 #crastore-lp .reno::before {
-  content: "RENOVATION";
-  position: absolute; right: -10px; bottom: -28px;
+  content: "RENOVATION"; position: absolute; right: -10px; bottom: -28px;
   font-family: "Montserrat", sans-serif; font-weight: 800;
   font-size: clamp(60px, 11vw, 130px); letter-spacing: .04em;
-  color: rgba(255,255,255,.045);
-  pointer-events: none;
+  color: rgba(255,255,255,.045); pointer-events: none;
 }
 #crastore-lp .reno .sec-label { color: var(--accent); }
 #crastore-lp .reno .sec-title { color: #fff; }
-#crastore-lp .reno .sec-lead { color: #b9c0c9; }
-#crastore-lp .reno-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
-#crastore-lp .reno-list { display: grid; gap: 16px; }
+#crastore-lp .reno .sec-lead { color: #c0c7d0; }
+#crastore-lp .reno-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
+#crastore-lp .reno-list { display: grid; gap: 14px; }
 #crastore-lp .reno-list li {
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.12);
-  border-left: 3px solid var(--accent);
-  border-radius: 10px;
-  padding: 18px 22px;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
+  border-left: 3px solid var(--accent); border-radius: 10px; padding: 18px 22px;
 }
-#crastore-lp .reno-list strong { display: block; font-size: 15px; margin-bottom: 4px; }
-#crastore-lp .reno-list span { font-size: 13px; color: #aab2bc; }
+#crastore-lp .reno-list strong { display: block; font-size: 16px; margin-bottom: 4px; }
+#crastore-lp .reno-list span { font-size: 14px; color: #aeb6c0; }
 #crastore-lp .reno-link {
   display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 28px; font-size: 14px; font-weight: 700; color: var(--accent) !important;
+  margin-top: 26px; font-size: 16px; font-weight: 700; color: var(--accent) !important;
 }
 #crastore-lp .reno-link:hover { text-decoration: underline; }
 
 /* services */
 #crastore-lp .services { background: var(--bg-soft); }
-#crastore-lp .svc-grid {
-  margin-top: 48px;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-}
+#crastore-lp .svc-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 #crastore-lp .svc {
-  position: relative;
-  background: var(--paper);
-  border-radius: var(--radius);
-  padding: 30px 26px;
-  border: 1px solid var(--line);
-  transition: box-shadow .25s, transform .25s;
-  display: block;
+  position: relative; background: var(--paper); border-radius: var(--radius);
+  padding: 30px 26px; border: 1px solid var(--line);
+  transition: box-shadow .25s, transform .25s; display: block;
 }
+#crastore-lp .svc.is-main { border-color: var(--accent); border-width: 2px; }
 #crastore-lp .svc:hover { box-shadow: 0 14px 36px rgba(20,23,28,.10); transform: translateY(-4px); }
 #crastore-lp .svc-icon {
   width: 48px; height: 48px; border-radius: 12px;
@@ -302,66 +360,84 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   display: flex; align-items: center; justify-content: center;
   font-size: 24px; margin-bottom: 16px;
 }
-#crastore-lp .svc h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: inherit; }
-#crastore-lp .svc p { font-size: 13.5px; color: var(--muted); }
-/* 修正: HTMLに存在しない .arrow 要素向けのCSSを削除（デッドコード） */
-#crastore-lp .badge-main {
-  font-size: 11px; font-weight: 700; color: #fff;
-  background: var(--accent-deep);
-  border-radius: 4px; padding: 2px 8px;
-}
+#crastore-lp .svc h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: inherit; line-height: 1.6; }
+#crastore-lp .svc p { font-size: 15px; color: var(--muted); }
+#crastore-lp .badge-main { font-size: 12px; font-weight: 700; color: #fff; background: var(--accent-deep); border-radius: 4px; padding: 3px 9px; }
+
+/* 費用について */
+#crastore-lp .price-box { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+#crastore-lp .price-item { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 24px; }
+#crastore-lp .price-item h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; color: inherit; display: flex; align-items: center; gap: 10px; line-height: 1.6; }
+#crastore-lp .price-item h3 .ic { font-size: 22px; flex: none; }
+#crastore-lp .price-item p { font-size: 15px; color: var(--muted); }
 
 /* flow */
-#crastore-lp .flow-grid {
-  margin-top: 48px;
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
-  counter-reset: step;
-}
+#crastore-lp .flow-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: step; }
 #crastore-lp .flow-step {
-  position: relative;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 30px 22px 26px;
+  position: relative; background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 28px 22px 26px;
 }
+#crastore-lp .flow-step.is-first { border-color: var(--accent); border-width: 2px; }
 #crastore-lp .flow-step::before {
-  counter-increment: step;
-  content: "0" counter(step);
-  font-family: "Montserrat", sans-serif;
-  font-weight: 800; font-size: 26px;
-  color: var(--accent-deep);
-  display: block; margin-bottom: 10px;
+  counter-increment: step; content: "0" counter(step);
+  font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 26px;
+  color: var(--accent-deep); display: block; margin-bottom: 8px;
 }
-#crastore-lp .flow-step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: inherit; }
-#crastore-lp .flow-step p { font-size: 13px; color: var(--muted); }
-#crastore-lp .flow-note { margin-top: 22px; font-size: 13px; color: var(--muted); }
+#crastore-lp .flow-step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: inherit; }
+#crastore-lp .flow-step p { font-size: 15px; color: var(--muted); }
+#crastore-lp .flow-step .tag {
+  display: inline-block; margin-bottom: 10px; font-size: 12px; font-weight: 700;
+  color: #fff; background: var(--accent-deep); border-radius: 4px; padding: 3px 10px;
+}
+#crastore-lp .flow-note { margin-top: 22px; font-size: 14px; color: var(--muted); }
+
+/* faq */
+#crastore-lp .faq { background: var(--bg-soft); }
+#crastore-lp .faq-list { margin-top: 40px; max-width: 840px; }
+#crastore-lp details {
+  border: 1px solid var(--line); border-radius: 12px;
+  background: var(--paper); margin-bottom: 12px; overflow: hidden;
+}
+#crastore-lp summary {
+  cursor: pointer; padding: 20px 24px; font-weight: 700; font-size: 16.5px;
+  list-style: none; display: flex; justify-content: space-between; gap: 16px;
+  align-items: center; line-height: 1.7;
+}
+#crastore-lp summary::-webkit-details-marker { display: none; }
+#crastore-lp summary::after { content: "＋"; color: var(--accent-deep); font-weight: 900; flex: none; font-size: 18px; }
+#crastore-lp details[open] summary::after { content: "−"; }
+#crastore-lp details .ans { padding: 0 24px 22px; color: var(--muted); font-size: 15.5px; }
+
+/* instagram */
+#crastore-lp .ig-band { background: var(--paper); }
+#crastore-lp .ig-inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 24px; border: 1px solid var(--line); border-radius: var(--radius); padding: 34px 38px;
+}
+#crastore-lp .ig-inner h2 { font-size: clamp(20px, 2.4vw, 26px); font-weight: 900; line-height: 1.6; color: inherit; }
+#crastore-lp .ig-inner p { margin-top: 10px; font-size: 15.5px; color: var(--muted); max-width: 34em; }
+#crastore-lp .btn-ig {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #fff !important; font-weight: 700; font-size: 16px;
+  padding: 16px 32px; border-radius: 999px; flex: none;
+  transition: filter .2s, transform .2s;
+}
+#crastore-lp .btn-ig:hover { filter: brightness(1.08); transform: translateY(-2px); }
+#crastore-lp .btn-ig svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
 
 /* company */
 #crastore-lp .company { background: var(--bg-soft); }
-/* 修正: 狭い画面で表がはみ出さないよう横スクロールコンテナを追加 */
-#crastore-lp .table-scroll {
-  margin-top: 40px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border-radius: var(--radius);
-}
+#crastore-lp .table-scroll { margin-top: 40px; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); }
 #crastore-lp .company-table {
-  width: 100%;
-  min-width: 480px;
-  border-collapse: collapse;
-  background: var(--paper);
-  border-radius: var(--radius);
-  overflow: hidden;
+  width: 100%; min-width: 480px; border-collapse: collapse;
+  background: var(--paper); border-radius: var(--radius); overflow: hidden;
   border: 1px solid var(--line);
 }
 #crastore-lp .company-table th, #crastore-lp .company-table td {
-  text-align: left;
-  padding: 18px 24px;
-  font-size: 14.5px;
-  border-bottom: 1px solid var(--line);
-  border-left: none; border-right: none; border-top: none;
-  vertical-align: top;
-  color: var(--ink);   /* テーマのtd白文字指定に勝つため明示 */
+  text-align: left; padding: 18px 24px; font-size: 15.5px;
+  border-bottom: 1px solid var(--line); border-left: none; border-right: none; border-top: none;
+  vertical-align: top; color: var(--ink);
 }
 #crastore-lp .company-table td { color: var(--ink-soft); }
 #crastore-lp .company-table a { color: var(--accent-deep); text-decoration: underline; }
@@ -369,103 +445,123 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 #crastore-lp .company-table th { width: 200px; font-weight: 700; background: #fafbfc; white-space: nowrap; color: var(--ink); }
 
 /* contact */
-#crastore-lp .contact {
-  background: linear-gradient(160deg, #14171c 0%, #1f2630 100%);
-  color: #fff; text-align: center;
-}
+#crastore-lp .contact { background: linear-gradient(160deg, #14171c 0%, #1f2630 100%); color: #fff; text-align: center; }
 #crastore-lp .contact .sec-label { justify-content: center; color: var(--accent); }
 #crastore-lp .contact .sec-label::after { display: none; }
 #crastore-lp .contact .sec-title { color: #fff; }
-#crastore-lp .contact .sec-lead { margin: 0 auto; color: #b9c0c9; }
-#crastore-lp .contact-actions { margin-top: 40px; display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; }
+#crastore-lp .contact .sec-lead { margin: 0 auto; color: #c0c7d0; }
+#crastore-lp .contact-actions { margin-top: 36px; display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
 #crastore-lp .contact-tel {
   display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
-  border: 1.5px solid rgba(255,255,255,.4);
-  border-radius: var(--radius);
-  padding: 16px 40px;
-  color: #fff !important;
+  border: 1.5px solid rgba(255,255,255,.4); border-radius: var(--radius);
+  padding: 14px 40px; color: #fff !important;
   transition: border-color .2s, background .2s;
 }
 #crastore-lp .contact-tel:hover { border-color: #fff; background: rgba(255,255,255,.06); }
-#crastore-lp .contact-tel .num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 26px; letter-spacing: .04em; }
-#crastore-lp .contact-tel .hours { font-size: 12px; color: #aab2bc; }
+#crastore-lp .contact-tel .num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 28px; letter-spacing: .04em; }
+#crastore-lp .contact-tel .hours { font-size: 13px; color: #b4bcc6; }
+#crastore-lp .contact .cta-note { justify-content: center; margin-top: 22px; }
+#crastore-lp .btn-line {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: #06c755; color: #fff !important; font-weight: 700; font-size: 17px;
+  padding: 18px 40px; border-radius: 999px; transition: filter .2s, transform .2s;
+}
+#crastore-lp .btn-line:hover { filter: brightness(.92); transform: translateY(-2px); }
 
 /* footer */
 #crastore-lp .cl-footer { background: #0e1115; color: #9aa2ac; padding: 44px 0; }
-#crastore-lp .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+#crastore-lp .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
 #crastore-lp .cl-footer .logotype { color: #fff; font-size: 18px; }
 #crastore-lp .cl-footer .logotype .s { color: var(--accent); }
-#crastore-lp .footer-nav { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; }
+#crastore-lp .footer-nav { display: flex; flex-wrap: wrap; gap: 18px; font-size: 14px; }
 #crastore-lp .footer-nav a:hover { color: #fff; }
-#crastore-lp .footer-copy { font-size: 12px; margin-top: 6px; }
+#crastore-lp .footer-copy { font-size: 12px; margin-top: 10px; }
+#crastore-lp .footer-info { font-size: 13px; margin-top: 8px; line-height: 1.8; }
+#crastore-lp .footer-info a { text-decoration: underline; }
 
 /* reveal animation */
 #crastore-lp .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
 #crastore-lp .reveal.on { opacity: 1; transform: none; }
-/* 修正: アニメーションを減らす設定のユーザーには動きを出さない */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   #crastore-lp .reveal { opacity: 1; transform: none; transition: none; }
   #crastore-lp * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
-/* 修正: 追従CTAは既定で非表示（狭い画面のみ後段のメディアクエリで表示） */
+/* 追従CTA（既定は非表示、狭い画面のみ表示） */
 #crastore-lp .sticky-cta { display: none; }
 
 /* ===== responsive ===== */
-@media (max-width: 880px) {
+@media (max-width: 1000px) {
+  #crastore-lp .case-grid { grid-template-columns: repeat(2, 1fr); }
+  #crastore-lp .ins-grid { grid-template-columns: 1fr; gap: 24px; }
+  #crastore-lp .rescue-voices { grid-template-columns: 1fr; }
+  #crastore-lp .rescue-reasons { grid-template-columns: 1fr; }
+}
+@media (max-width: 1080px) {
+  #crastore-lp .head-tel { display: none; }
   #crastore-lp .gnav {
-    position: fixed; top: var(--header-h); left: 0; right: 0;
-    background: #fff;
+    position: fixed; top: var(--header-h); left: 0; right: 0; background: #fff;
     flex-direction: column; align-items: stretch; gap: 0;
     border-bottom: 1px solid var(--line);
     box-shadow: 0 20px 40px rgba(20,23,28,.12);
-    display: none;
-    z-index: 9998;
-    max-height: calc(100vh - var(--header-h)); /* 修正: 項目が増えても画面外に出ないように */
-    overflow-y: auto;
+    display: none; z-index: 9998;
+    max-height: calc(100vh - var(--header-h)); overflow-y: auto;
   }
-  body.admin-bar #crastore-lp .gnav { top: 110px; max-height: calc(100vh - 110px); }
+  body.admin-bar #crastore-lp .gnav { top: 114px; max-height: calc(100vh - 114px); }
   #crastore-lp .gnav.open { display: flex; }
-  #crastore-lp .gnav a { padding: 16px 24px; border-top: 1px solid var(--line); font-size: 15px; }
+  #crastore-lp .gnav a { padding: 17px 24px; border-top: 1px solid var(--line); font-size: 16px; }
   #crastore-lp .gnav .btn-cta { margin: 16px 24px; justify-content: center; border-radius: 10px; }
   #crastore-lp .menu-btn {
     display: flex; flex-direction: column; justify-content: center; gap: 5px;
-    width: 44px; height: 44px; padding: 10px;
-    background: none; border: none; cursor: pointer;
+    width: 46px; height: 46px; padding: 11px; background: none; border: none; cursor: pointer;
   }
   #crastore-lp .menu-btn span { height: 2px; background: var(--ink); border-radius: 2px; transition: transform .25s, opacity .25s; display: block; width: 100%; }
   #crastore-lp .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   #crastore-lp .menu-btn.open span:nth-child(2) { opacity: 0; }
   #crastore-lp .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  #crastore-lp .hero { padding: 130px 0 80px; }
+  #crastore-lp .hero { padding: 120px 0 68px; }
   #crastore-lp .hero-points { grid-template-columns: 1fr; }
-  #crastore-lp section { padding: 72px 0; }
-  #crastore-lp .cards3, #crastore-lp .svc-grid { grid-template-columns: 1fr; }
-  #crastore-lp .reno-grid { grid-template-columns: 1fr; gap: 40px; }
+  #crastore-lp section { padding: 64px 0; }
+  #crastore-lp .cards3, #crastore-lp .svc-grid, #crastore-lp .price-box { grid-template-columns: 1fr; }
+  #crastore-lp .reno-grid { grid-template-columns: 1fr; gap: 36px; }
   #crastore-lp .flow-grid { grid-template-columns: 1fr 1fr; }
   #crastore-lp .company-table th { width: 120px; }
   #crastore-lp .footer-inner { flex-direction: column; align-items: flex-start; }
+  #crastore-lp .case-foot { flex-direction: column; align-items: stretch; text-align: center; }
+  #crastore-lp .case-foot .btn-primary { width: 100%; }
+  #crastore-lp .rescue-answer { padding: 30px 24px; }
+  #crastore-lp .ig-inner { padding: 28px 24px; }
+  #crastore-lp .btn-ig { width: 100%; }
 
-  /* 修正: スマホでヘッダーからCTAが消えていたので、常時表示の追従ボタンを追加 */
+  /* 頼みやすさ: スマホは常に「電話」と「フォーム」を画面下に出す */
   #crastore-lp .sticky-cta {
-    display: block;
-    position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 9997;
-    background: var(--accent-hover); color: #fff !important;
-    text-align: center; font-weight: 700; font-size: 15px;
-    padding: 15px 20px; border-radius: 999px;
-    box-shadow: 0 10px 28px rgba(20,23,28,.28);
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 10px;
+    position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 9997;
   }
+  #crastore-lp .sticky-cta a {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 12px 10px; border-radius: 12px; font-weight: 700; font-size: 15px;
+    line-height: 1.3; box-shadow: 0 10px 28px rgba(20,23,28,.3);
+  }
+  #crastore-lp .sticky-cta .s-tel { background: #fff; color: var(--ink) !important; border: 1.5px solid var(--line); }
+  #crastore-lp .sticky-cta .s-tel .num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 17px; }
+  #crastore-lp .sticky-cta .s-tel .sub,
+  #crastore-lp .sticky-cta .s-form .sub { font-size: 11px; font-weight: 500; opacity: .85; }
+  #crastore-lp .sticky-cta .s-form { background: var(--accent-btn); color: #fff !important; }
+  #crastore-lp .cl-footer { padding-bottom: 104px; }
 }
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+  #crastore-lp .case-grid { grid-template-columns: 1fr; }
   #crastore-lp .flow-grid { grid-template-columns: 1fr; }
-  #crastore-lp .hero-actions .btn-primary, #crastore-lp .hero-actions .btn-ghost { width: 100%; }
-  #crastore-lp .cl-footer { padding-bottom: 92px; } /* 追従CTAとの重なり回避 */
+  #crastore-lp .hero-actions { flex-direction: column; align-items: stretch; }
+  #crastore-lp .hero-actions .btn-primary, #crastore-lp .btn-tel-hero { width: 100%; }
+  #crastore-lp .contact-actions { flex-direction: column; align-items: stretch; }
 }
 </style>
 
-<!-- 修正: JavaScript無効時に .reveal が透明のまま残らないようにする -->
+<!-- JavaScript無効時に .reveal が透明のまま残らないようにする -->
 <noscript><style>#crastore-lp .reveal{opacity:1;transform:none;}</style></noscript>
 
 <div id="crastore-lp">
@@ -475,12 +571,18 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
     <a href="https://crastore.xyz/" class="logotype" aria-label="株式会社Crastore ホーム">CRA<span class="s">S</span>TORE</a>
     <button class="menu-btn" id="clMenuBtn" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="clGnav"><span></span><span></span><span></span></button>
     <nav class="gnav" id="clGnav" aria-label="メインメニュー">
-      <a href="#strength">強み</a>
-      <a href="#renovation">改修工事</a>
+      <a href="#rescue">断られた工事</a>
+      <a href="#insurance">火災保険</a>
+      <a href="#cases">相談例</a>
       <a href="#service">サービス</a>
       <a href="#flow">ご依頼の流れ</a>
+      <a href="#faq">Q&amp;A</a>
       <a href="#company">会社概要</a>
-      <a class="btn-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">無料相談はこちら<span class="sr-only">（別ウィンドウで開きます）</span></a>
+      <a class="head-tel" href="tel:05037003996">
+        <span class="num">050-3700-3996</span>
+        <span class="sub">受付 9:00〜17:00</span>
+      </a>
+      <a class="btn-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">無料で相談<span class="sr-only">（別ウィンドウで開きます）</span></a>
     </nav>
   </div>
 </header>
@@ -491,21 +593,152 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   <section class="hero" id="top" aria-labelledby="heroTitle">
     <div class="wrap hero-inner">
       <p class="hero-tag">大阪・船場の建設会社</p>
-      <h1 id="heroTitle">皆が表現できないものを、<br>わたしたちが<span class="accent">現実</span>にする。</h1>
+      <h1 id="heroTitle">壁のキズ1枚から、<br><span class="accent">他社で断られた工事</span>まで。</h1>
       <p class="hero-lead">
-        「ここ、直せるのかな」——その一言から始めてください。
-        Crastore(クラストア)は、住宅・店舗・賃貸物件の<strong>改修工事を得意とする大阪の建設会社</strong>。
-        小さな修繕から全面リノベーションまで、ご相談・お見積りは無料です。
+        Crastore(クラストア)は、大阪の改修・リフォーム専門の建設会社です。
+        <strong>火災保険を使った修繕</strong>や、<strong>他社で「できない」と言われた工事</strong>のご相談を多くいただいています。
+        写真を1枚送っていただくだけで、お見積りが始められます。
       </p>
+      <p class="hero-slogan">皆が表現できないものを、わたしたちが現実にする。</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">無料で相談する<span class="sr-only">（別ウィンドウで開きます）</span></a>
-        <a class="btn-ghost" href="#service">サービスを見る</a>
+        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">写真を送って無料見積り<span class="sr-only">（別ウィンドウで開きます）</span></a>
+        <a class="btn-tel-hero" href="tel:05037003996">
+          <span class="num">050-3700-3996</span>
+          <span class="sub">受付 9:00〜17:00</span>
+        </a>
       </div>
+      <p class="cta-note">
+        <span><span class="ck" aria-hidden="true">✓</span>相談・現地調査・見積りまで無料</span>
+        <span><span class="ck" aria-hidden="true">✓</span>見積り後のお断りOK</span>
+        <span><span class="ck" aria-hidden="true">✓</span>しつこい営業なし</span>
+      </p>
       <ul class="hero-points">
-        <li><span class="dot" aria-hidden="true">●</span>ご相談・お見積り 無料</li>
-        <li><span class="dot" aria-hidden="true">●</span>災害時の保険申請工事に対応</li>
-        <li><span class="dot" aria-hidden="true">●</span>適格請求書発行事業者</li>
+        <li><span class="dot" aria-hidden="true">●</span>火災保険の申請サポートに対応</li>
+        <li><span class="dot" aria-hidden="true">●</span>他社で断られた工事もご相談ください</li>
+        <li><span class="dot" aria-hidden="true">●</span>一箇所だけの補修から対応</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- 他社で断られた工事 -->
+  <section class="rescue" id="rescue" aria-labelledby="rescueTitle">
+    <div class="wrap">
+      <p class="sec-label">Second Opinion</p>
+      <h2 class="sec-title" id="rescueTitle">「うちでは無理です」と言われた工事、<br>そのままにしていませんか。</h2>
+      <p class="sec-lead">断られた理由の多くは、工事が不可能だからではありません。その会社の体制に合わなかっただけ、ということがよくあります。</p>
+
+      <ul class="rescue-voices">
+        <li class="voice reveal">「小さすぎる工事なので受けられない、と言われた」<span class="who">— 一箇所だけの補修をご希望の方</span></li>
+        <li class="voice reveal">「工種がまたがるので、別々の業者に頼んでほしいと言われた」<span class="who">— 解体から仕上げまで必要だった方</span></li>
+        <li class="voice reveal">「保険を使う工事は扱っていない、と断られた」<span class="who">— 台風被害の修繕をご希望の方</span></li>
+      </ul>
+
+      <div class="rescue-answer reveal">
+        <h3>断られた理由を聞かせてください。<br><span class="accent">Crastoreなら対応できる</span>ことがあります。</h3>
+        <p>できる・できないを、その場しのぎではなくきちんとお伝えします。当社でも難しい場合は、その理由と代わりの手段を正直にご説明します。</p>
+        <ul class="rescue-reasons">
+          <li>
+            <span class="ng">「規模が小さくて受けられない」</span>
+            <strong>一箇所だけでも対応します</strong>
+            <span class="d">壁のキズ、建具の建て付け、蛇口の交換。小さな工事こそ、まとめてお引き受けします。</span>
+          </li>
+          <li>
+            <span class="ng">「工種がまたがるので無理」</span>
+            <strong>多工種をワンストップで</strong>
+            <span class="d">解体から仕上げまで職人ネットワークがあります。お客様が業者を探し回る必要はありません。</span>
+          </li>
+          <li>
+            <span class="ng">「保険が絡む工事は扱わない」</span>
+            <strong>火災保険の申請に慣れています</strong>
+            <span class="d">被害の調査から、申請に必要な写真・見積書の作成、認定後の施工まで一貫して対応します。</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 火災保険 -->
+  <section class="insurance" id="insurance" aria-labelledby="insTitle">
+    <div class="wrap">
+      <p class="sec-label">Insurance</p>
+      <h2 class="sec-title" id="insTitle">その傷み、火災保険で直せるかもしれません。</h2>
+      <p class="sec-lead">
+        火災保険は、火事だけの保険ではありません。台風・大雨・雪・落雷・飛来物といった自然災害による建物の破損も、
+        契約内容によっては補償の対象になります。「知らずに自費で直した」「申請が面倒で諦めた」という方が少なくありません。
+      </p>
+
+      <div class="ins-grid">
+        <div class="ins-card reveal">
+          <h3><span class="ic" aria-hidden="true">🏠</span>対象になりうる被害の例</h3>
+          <ul class="ins-targets">
+            <li>屋根瓦のズレ・破損</li>
+            <li>雨樋の破損・変形</li>
+            <li>外壁のひび・剥がれ</li>
+            <li>雨漏り</li>
+            <li>窓ガラス・網戸</li>
+            <li>カーポート・テラス屋根</li>
+            <li>フェンス・門扉</li>
+            <li>アンテナの倒れ</li>
+          </ul>
+          <p style="margin-top:18px;font-size:14.5px;color:var(--muted);">
+            数年前の台風による被害でも、申請できる場合があります（一般に保険法上の請求権の時効は3年です。契約内容により異なります）。
+          </p>
+        </div>
+
+        <div class="ins-card reveal">
+          <h3><span class="ic" aria-hidden="true">🤝</span>Crastoreがお手伝いすること</h3>
+          <ul class="ins-support">
+            <li><span class="ck" aria-hidden="true">✓</span><span>建物を調査し、災害による被害かどうかを確認します</span></li>
+            <li><span class="ck" aria-hidden="true">✓</span><span>申請に必要な被害写真・修理見積書を作成します</span></li>
+            <li><span class="ck" aria-hidden="true">✓</span><span>保険会社・鑑定人の現地調査に立ち会います</span></li>
+            <li><span class="ck" aria-hidden="true">✓</span><span>認定後の修繕工事まで、同じ窓口で対応します</span></li>
+          </ul>
+          <p style="margin-top:18px;font-size:14.5px;color:var(--muted);">
+            調査・写真撮影・見積書の作成までは無料です。申請するかどうかは、内容をご確認のうえお客様がお決めください。
+          </p>
+        </div>
+      </div>
+
+      <!-- ▼要確認: 実績件数を入れると説得力が上がります。数字が固まったらコメントを外してご利用ください
+      <p style="margin-top:28px;font-size:17px;font-weight:700;">これまでに〇〇件の申請をサポートしてきました。</p>
+      -->
+
+      <div class="notice reveal">
+        <h4>ご確認ください</h4>
+        <p>保険金が支払われるかどうかを判断するのは保険会社です。当社が支払いをお約束することはできません。調査のうえ、対象になりそうかどうかを正直にお伝えします。</p>
+        <p>経年劣化による傷みは、原則として補償の対象外です。また、事実と異なる内容での請求は保険金詐欺にあたります。当社はそうした申請には一切関与しません。</p>
+        <p>当社は工事を行う建設会社です。保険金請求の代行は行っておらず、成功報酬として保険金の一部をいただくこともありません。</p>
+      </div>
+
+      <div class="hero-actions" style="margin-top:32px;">
+        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">保険が使えるか相談する（無料）<span class="sr-only">（別ウィンドウで開きます）</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 相談例 -->
+  <section class="cases" id="cases" aria-labelledby="casesTitle">
+    <div class="wrap">
+      <p class="sec-label">Case</p>
+      <h2 class="sec-title" id="casesTitle">こんなご相談から、大丈夫です。</h2>
+      <p class="sec-lead">「これくらいで頼んでいいのかな」と迷う必要はありません。実際にお受けしているのは、こんなご相談です。</p>
+      <ul class="case-grid">
+        <li class="case reveal"><span class="ic" aria-hidden="true">🧱</span>壁紙が剥がれてきた・破れた</li>
+        <li class="case reveal"><span class="ic" aria-hidden="true">🚿</span>蛇口から水が漏れている</li>
+        <li class="case reveal"><span class="ic" aria-hidden="true">🪵</span>床がきしむ・へこんだ</li>
+        <li class="case reveal"><span class="ic" aria-hidden="true">🚪</span>ドアや網戸の建て付けが悪い</li>
+        <li class="case reveal"><span class="ic" aria-hidden="true">🛁</span>浴室・トイレを新しくしたい</li>
+        <li class="case reveal"><span class="ic" aria-hidden="true">🌀</span>台風で屋根や外壁が傷んだ</li>
+        <li class="case reveal"><span class="ic" aria-hidden="true">🔑</span>退去後の原状回復をまとめて</li>
+        <li class="case reveal"><span class="ic" aria-hidden="true">🏪</span>店舗の内装を変えたい</li>
+      </ul>
+      <div class="case-foot reveal">
+        <p>
+          まず「費用だけ知りたい」でも構いません。
+          <small>気になる箇所の写真と、おおよその寸法。それだけあれば概算をお出しできます。</small>
+        </p>
+        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">写真を送って相談する<span class="sr-only">（別ウィンドウで開きます）</span></a>
+      </div>
     </div>
   </section>
 
@@ -519,17 +752,17 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
         <div class="card reveal">
           <p class="card-num">01</p>
           <h3>必要な工事だけを、提案する</h3>
-          <p>水まわり・内装・外装・原状回復まで幅広く対応。現地を見て、いま本当に必要な工事だけをご提案します。過剰な工事はお勧めしません——それが結局、いちばん信頼につながるからです。</p>
+          <p>現地を見て、いま本当に必要な工事だけをご提案します。過剰な工事はお勧めしません。それが結局、いちばん信頼につながるからです。</p>
         </div>
         <div class="card reveal">
           <p class="card-num">02</p>
           <h3>速くて、ガラス張り</h3>
-          <p>見積書・請求書は完全デジタル。スマホでいつでも確認でき、何にいくらかかるかが一目でわかります。「よくわからないまま契約」を、この業界からなくしたい。</p>
+          <p>見積書・請求書は完全デジタル。スマホでいつでも確認でき、何にいくらかかるかが一目でわかります。</p>
         </div>
         <div class="card reveal">
           <p class="card-num">03</p>
           <h3>窓口は、ひとつでいい</h3>
-          <p>解体から仕上げまで、多工種の職人ネットワークでワンストップ。複数の業者に電話して、日程を調整して……という手間は、もう必要ありません。</p>
+          <p>解体から仕上げまで、多工種の職人ネットワークでワンストップ。複数の業者に電話して日程を調整する手間はもう必要ありません。</p>
         </div>
       </div>
     </div>
@@ -543,8 +776,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
         <h2 class="sec-title" id="renoTitle">改修は「早め」が、<br>いちばんの節約です。</h2>
         <p class="sec-lead">
           外壁の小さなひび、天井の雨染み、水まわりの違和感。
-          実は「まだ大丈夫」が、いちばん高くつきます。劣化は連鎖し、修繕費は数倍に膨らむからです。
-          気になったその日に、写真を一枚送ってください。それだけでご相談が始められます。
+          「まだ大丈夫」が、いちばん高くつきます。劣化は連鎖し、修繕費は数倍に膨らむからです。
         </p>
         <a class="reno-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">まずは無料で相談する →<span class="sr-only">（別ウィンドウで開きます）</span></a>
       </div>
@@ -561,17 +793,17 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
     <div class="wrap">
       <p class="sec-label">Service</p>
       <h2 class="sec-title" id="serviceTitle">サービス</h2>
-      <p class="sec-lead">工事のことも、工事のまわりのことも。「これは頼めるのかな?」と迷ったら、まず聞いてください。</p>
+      <p class="sec-lead">工事のことも、工事のまわりのことも。「これは頼めるのかな」と迷ったら、まず聞いてください。</p>
       <div class="svc-grid">
-        <div class="svc reveal">
+        <div class="svc is-main reveal">
+          <div class="svc-icon" aria-hidden="true">🛡️</div>
+          <h3>火災保険を活用した修繕 <span class="badge-main">得意分野</span></h3>
+          <p>台風・大雨・雪などの自然災害による被害の修繕。調査から申請書類の作成、認定後の施工まで対応します。</p>
+        </div>
+        <div class="svc is-main reveal">
           <div class="svc-icon" aria-hidden="true">🛠️</div>
           <h3>改修・リフォーム工事 <span class="badge-main">得意分野</span></h3>
           <p>内装・外装・水まわり・原状回復など、住宅から店舗まで幅広い工種に対応します。</p>
-        </div>
-        <div class="svc reveal">
-          <div class="svc-icon" aria-hidden="true">🛡️</div>
-          <h3>災害時保険を活用した工事</h3>
-          <p>台風・地震などの被害は、火災保険等を利用した修繕工事に対応。申請からサポートします。</p>
         </div>
         <div class="svc reveal">
           <div class="svc-icon" aria-hidden="true">🏢</div>
@@ -597,30 +829,125 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
     </div>
   </section>
 
+  <!-- 費用について -->
+  <section id="price" aria-labelledby="priceTitle">
+    <div class="wrap">
+      <p class="sec-label">Price</p>
+      <h2 class="sec-title" id="priceTitle">費用について</h2>
+      <p class="sec-lead">同じ「壁の補修」でも、下地の状態や広さで金額は変わります。だからこそ、概算を早めに、無料でお出しします。</p>
+      <div class="price-box">
+        <div class="price-item reveal">
+          <h3><span class="ic" aria-hidden="true">📷</span>写真で概算</h3>
+          <p>気になる箇所の写真とおおよその寸法をお送りいただければ、現地に伺う前に費用感をお伝えします。</p>
+        </div>
+        <div class="price-item reveal">
+          <h3><span class="ic" aria-hidden="true">📄</span>内訳の見える見積書</h3>
+          <p>何にいくらかかるのかを明示します。削る判断も、追加する判断もしやすくなります。</p>
+        </div>
+        <div class="price-item reveal">
+          <h3><span class="ic" aria-hidden="true">🙅</span>見積り後のお断りOK</h3>
+          <p>ご相談から現地調査、お見積りまで無料です。金額を見てお断りいただいて構いません。</p>
+        </div>
+      </div>
+
+      <!-- ▼要確認: 実際の金額を入れると問い合わせ数に最も効きます。
+           下記を参考に、自社の実績に合わせて書き換えてからコメントを外してください。
+      <div class="table-scroll">
+        <table class="company-table">
+          <tbody>
+            <tr><th scope="row">壁紙の部分張替え</th><td>〇〇,〇〇〇円〜</td></tr>
+            <tr><th scope="row">トイレ交換</th><td>〇〇,〇〇〇円〜</td></tr>
+            <tr><th scope="row">雨樋の交換</th><td>〇〇,〇〇〇円〜</td></tr>
+            <tr><th scope="row">ワンルームの原状回復</th><td>〇〇,〇〇〇円〜</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="flow-note">※ 建物の状態・数量により変動します。正確な金額はお見積りにてご提示します。</p>
+      -->
+    </div>
+  </section>
+
   <!-- Flow -->
-  <section id="flow" aria-labelledby="flowTitle">
+  <section class="strengths" id="flow" aria-labelledby="flowTitle">
     <div class="wrap">
       <p class="sec-label">Flow</p>
       <h2 class="sec-title" id="flowTitle">ご依頼の流れ</h2>
+      <p class="sec-lead">最初の一歩は、写真を1枚送るだけです。</p>
       <div class="flow-grid">
-        <div class="flow-step reveal">
+        <div class="flow-step is-first reveal">
+          <span class="tag">まずはここから</span>
           <h3>ご相談</h3>
-          <p>フォームまたはお電話でお気軽に。気になる箇所の写真を一枚送っていただくだけでも大丈夫です。</p>
+          <p>フォームまたはお電話で。気になる箇所の写真を1枚送っていただくだけで大丈夫です。</p>
         </div>
         <div class="flow-step reveal">
+          <span class="tag">ここまで無料</span>
           <h3>現地調査・お見積り</h3>
-          <p>現地を確認し、必要な工事だけを盛り込んだお見積りをご提示。<strong>ここまですべて無料</strong>。納得できなければ断っていただいて構いません。</p>
+          <p>現地を確認し、必要な工事だけを盛り込んだお見積りをご提示。納得できなければ、お断りいただいて構いません。</p>
         </div>
         <div class="flow-step reveal">
           <h3>ご契約・施工</h3>
-          <p>内容にご納得いただいてから着工します。ご近所への挨拶・配慮と安全管理は、仕上がりと同じくらい大切にしています。</p>
+          <p>内容にご納得いただいてから着工します。ご近所への挨拶・配慮と安全管理も大切にしています。</p>
         </div>
         <div class="flow-step reveal">
           <h3>お引き渡し</h3>
           <p>仕上がりを一緒にご確認いただいてお引き渡し。「ついでにここも」という施工後のご相談も歓迎です。</p>
         </div>
       </div>
-      <p class="flow-note">※ 災害時保険を活用する工事の場合は、保険申請の流れも併せてご案内します。</p>
+      <p class="flow-note">※ 火災保険を使う場合は、上記に加えて「保険会社への申請」「鑑定人の現地調査」が入ります。手順はその都度ご案内します。</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq" aria-labelledby="faqTitle">
+    <div class="wrap">
+      <p class="sec-label">Q&amp;A</p>
+      <h2 class="sec-title" id="faqTitle">よくあるご質問</h2>
+      <div class="faq-list">
+        <details open>
+          <summary>他社に断られた工事でも、本当に相談していいのですか？</summary>
+          <div class="ans">はい。むしろ、そうしたご相談を多くいただいています。断られた理由を教えていただければ、当社で対応できるかどうかを判断してお伝えします。当社でも難しい場合は、その理由をはっきりお伝えします。</div>
+        </details>
+        <details>
+          <summary>火災保険は、本当に使えるのでしょうか？</summary>
+          <div class="ans">自然災害による破損であれば、契約内容によって対象になる可能性があります。ただし、支払いを判断するのは保険会社であり、当社がお約束することはできません。まず建物を調査し、対象になりそうかどうかを正直にお伝えします。経年劣化は原則として対象外です。</div>
+        </details>
+        <details>
+          <summary>保険の申請サポートに費用はかかりますか？</summary>
+          <div class="ans">調査・写真撮影・修理見積書の作成までは無料です。保険金の一部を成功報酬としていただくことはありません。当社は工事を行う建設会社で、保険金請求の代行業者ではありません。</div>
+        </details>
+        <details>
+          <summary>見積りだけでも大丈夫ですか？</summary>
+          <div class="ans">大丈夫です。ご相談・現地調査・お見積りまで無料です。金額を見てお断りいただいて構いませんし、しつこい営業もいたしません。</div>
+        </details>
+        <details>
+          <summary>一箇所だけの小さな工事でも頼めますか？</summary>
+          <div class="ans">承ります。壁のキズ、建具の建て付け、蛇口の交換など、一箇所だけのご依頼も歓迎です。ほかに気になる箇所があれば、まとめて対応したほうが費用を抑えられる場合もあります。</div>
+        </details>
+        <details>
+          <summary>対応エリアはどこまでですか？</summary>
+          <div class="ans">大阪府を中心に対応しています。エリア外かどうか迷われる場合も、まずはお問い合わせください。<!-- ▼要確認: 実際の対応範囲に合わせて書き換えてください --></div>
+        </details>
+        <details>
+          <summary>連絡はどの方法が早いですか？</summary>
+          <div class="ans">お急ぎの場合はお電話（受付 9:00〜17:00）が確実です。お問い合わせフォームは24時間受け付けており、写真をそのまま添付していただけます。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram -->
+  <section class="ig-band" id="instagram" aria-labelledby="igTitle">
+    <div class="wrap">
+      <div class="ig-inner reveal">
+        <div>
+          <h2 id="igTitle">施工の様子は、Instagramで公開しています。</h2>
+          <p>実際にどんな工事をしているのか。仕上がりや現場の様子をご覧いただけます。ご依頼前の判断材料にしてください。</p>
+        </div>
+        <a class="btn-ig" href="https://www.instagram.com/crastore_inc/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.13-1.38.66-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+          @crastore_inc を見る<span class="sr-only">（別ウィンドウで開きます）</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -636,8 +963,10 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
             <tr><th scope="row">所在地</th><td>〒541-0057 大阪市中央区北久宝寺町2-6-10-404</td></tr>
             <tr><th scope="row">TEL</th><td><a href="tel:05037003996">050-3700-3996</a></td></tr>
             <tr><th scope="row">営業時間</th><td>9:00〜17:00</td></tr>
-            <tr><th scope="row">事業内容</th><td>改修・リフォーム工事／各種建設工事／賃貸物件管理／建材・設備の販売／災害時保険を活用した修繕工事</td></tr>
+            <tr><th scope="row">対応エリア</th><td>大阪府を中心に対応<!-- ▼要確認: 実際の対応範囲に合わせて書き換えてください --></td></tr>
+            <tr><th scope="row">事業内容</th><td>改修・リフォーム工事／各種建設工事／火災保険を活用した修繕工事／賃貸物件管理／建材・設備の販売</td></tr>
             <tr><th scope="row">登録</th><td>適格請求書発行事業者(登録番号 T9122001026672)</td></tr>
+            <tr><th scope="row">Instagram</th><td><a href="https://www.instagram.com/crastore_inc/" target="_blank" rel="noopener">@crastore_inc</a></td></tr>
           </tbody>
         </table>
       </div>
@@ -648,15 +977,23 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   <section class="contact" id="contact" aria-labelledby="contactTitle">
     <div class="wrap">
       <p class="sec-label">Contact</p>
-      <h2 class="sec-title" id="contactTitle">「これって直る?」から、始めましょう。</h2>
-      <p class="sec-lead">質問だけでも、写真一枚だけでも大歓迎。ご相談・現地調査・お見積りはすべて無料です。<br>しつこい営業は一切しません。</p>
+      <h2 class="sec-title" id="contactTitle">「これって直る？」から、始めましょう。</h2>
+      <p class="sec-lead">質問だけでも、写真1枚だけでも大歓迎です。他社で断られた工事、保険が使えるかどうかのご相談も、遠慮なくお寄せください。</p>
       <div class="contact-actions">
-        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">お問い合わせフォームへ<span class="sr-only">（別ウィンドウで開きます）</span></a>
+        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">お問い合わせフォーム（24時間受付）<span class="sr-only">（別ウィンドウで開きます）</span></a>
         <a class="contact-tel" href="tel:05037003996">
           <span class="num">050-3700-3996</span>
           <span class="hours">受付 9:00〜17:00</span>
         </a>
+        <!-- ▼要確認: LINEをご利用の場合、下のコメントを外してURLを差し替えてください
+        <a class="btn-line" href="https://line.me/R/ti/p/@ここにLINE-IDを入れる" target="_blank" rel="noopener">LINEで相談する</a>
+        -->
       </div>
+      <p class="cta-note">
+        <span><span class="ck" aria-hidden="true">✓</span>相談・現地調査・見積りまで無料</span>
+        <span><span class="ck" aria-hidden="true">✓</span>見積り後のお断りOK</span>
+        <span><span class="ck" aria-hidden="true">✓</span>しつこい営業なし</span>
+      </p>
     </div>
   </section>
 
@@ -666,25 +1003,36 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   <div class="wrap footer-inner">
     <div>
       <p class="logotype">CRA<span class="s">S</span>TORE</p>
+      <p class="footer-info">
+        〒541-0057 大阪市中央区北久宝寺町2-6-10-404<br>
+        TEL <a href="tel:05037003996">050-3700-3996</a>（受付 9:00〜17:00）<br>
+        Instagram <a href="https://www.instagram.com/crastore_inc/" target="_blank" rel="noopener">@crastore_inc</a>
+      </p>
       <p class="footer-copy">&copy; <span id="clYear">2026</span> 株式会社Crastore</p>
     </div>
     <nav class="footer-nav" aria-label="フッターメニュー">
-      <a href="#strength">強み</a>
-      <a href="#renovation">改修工事</a>
+      <a href="#rescue">断られた工事</a>
+      <a href="#insurance">火災保険</a>
+      <a href="#cases">相談例</a>
       <a href="#service">サービス</a>
+      <a href="#price">費用について</a>
       <a href="#flow">ご依頼の流れ</a>
+      <a href="#faq">よくあるご質問</a>
       <a href="#company">会社概要</a>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">お問い合わせ</a>
     </nav>
   </div>
 </footer>
 
-<!-- 修正: スマホでヘッダーのCTAが隠れるため、追従型の問い合わせボタンを追加 -->
-<a class="sticky-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">無料で相談する（お問い合わせフォーム）</a>
+<!-- スマホ用の追従CTA（電話 / フォーム） -->
+<div class="sticky-cta">
+  <a class="s-tel" href="tel:05037003996"><span class="num">050-3700-3996</span><span class="sub">電話で相談</span></a>
+  <a class="s-form" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">写真を送って無料見積り<span class="sub">24時間受付</span></a>
+</div>
 
 </div>
 
-<!-- 修正: 検索結果での表示を整えるための構造化データ（Google推奨） -->
+<!-- 検索結果での表示を整えるための構造化データ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -693,7 +1041,8 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   "alternateName": "株式会社クラストア",
   "url": "https://crastore.xyz/",
   "telephone": "+81-50-3700-3996",
-  "description": "大阪・船場の建設会社。住宅・店舗・賃貸物件の改修工事を得意とし、小さな修繕から全面リノベーションまで対応します。ご相談・現地調査・お見積りは無料です。",
+  "description": "大阪の改修・リフォーム専門の建設会社。火災保険を活用した修繕、他社で断られた工事にも対応します。ご相談・現地調査・お見積りは無料です。",
+  "sameAs": ["https://www.instagram.com/crastore_inc/"],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "北久宝寺町2-6-10-404",
@@ -708,7 +1057,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
     "opens": "09:00",
     "closes": "17:00"
   }],
-  "areaServed": { "@type": "AdministrativeArea", "name": "大阪府および近隣府県" }
+  "areaServed": { "@type": "AdministrativeArea", "name": "大阪府" }
 }
 </script>
 
@@ -732,14 +1081,12 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
       var willOpen = !gnav.classList.contains('open');
       menuBtn.classList.toggle('open', willOpen);
       gnav.classList.toggle('open', willOpen);
-      // 修正: 開閉状態を支援技術に伝える
       menuBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
       menuBtn.setAttribute('aria-label', willOpen ? 'メニューを閉じる' : 'メニューを開く');
     });
     gnav.addEventListener('click', function (e) {
-      if (e.target.closest('a')) closeMenu();   // 修正: リンク内のspanをクリックしても閉じるように
+      if (e.target.closest('a')) closeMenu();
     });
-    // 修正: メニュー外のクリック / Escキー / 画面拡大で閉じる
     document.addEventListener('click', function (e) {
       if (!gnav.classList.contains('open')) return;
       if (gnav.contains(e.target) || menuBtn.contains(e.target)) return;
@@ -749,11 +1096,11 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
       if (e.key === 'Escape') closeMenu();
     });
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 880) closeMenu();
+      if (window.innerWidth > 1080) closeMenu();
     });
   }
 
-  // 修正: 著作権表記の年を自動更新（毎年の書き換えが不要に）
+  // 著作権表記の年を自動更新
   var y = document.getElementById('clYear');
   if (y) y.textContent = new Date().getFullYear();
 
@@ -772,7 +1119,6 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
       });
     }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
     Array.prototype.forEach.call(reveals, function (el) { io.observe(el); });
-    // 保険: 何らかの理由で発火しなかった要素も必ず表示する
     setTimeout(showAll, 1500);
   }
 })();
