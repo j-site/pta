@@ -286,13 +286,45 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 }
 #crastore-lp .ins-support { display: grid; gap: 14px; }
 #crastore-lp .ins-support li { display: flex; gap: 12px; font-size: 15.5px; line-height: 1.75; }
-#crastore-lp .ins-support .ck { color: var(--accent-deep); font-weight: 900; flex: none; }
+#crastore-lp .ins-support .ck {
+  flex: none; width: 24px; height: 24px; border-radius: 50%; margin-top: 3px;
+  background: var(--accent-deep); color: #fff; display: grid; place-items: center;
+  font-family: var(--font-en); font-weight: 800; font-size: 13px; line-height: 1;
+}
+#crastore-lp .ins-support strong { font-weight: 700; }
 #crastore-lp .notice {
   margin-top: 30px; background: var(--paper);
   border: 1px solid var(--line); border-left: 4px solid #8a93a0;
   border-radius: 10px; padding: 22px 26px;
 }
 #crastore-lp .notice h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+/* 私たちの立場（3本柱） */
+#crastore-lp .stance { margin-top: 36px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+#crastore-lp .stance li {
+  background: var(--paper); border: 1px solid var(--line); border-top: 4px solid var(--accent);
+  border-radius: var(--radius); padding: 26px 24px;
+}
+#crastore-lp .stance strong { display: block; font-size: 17px; font-weight: 800; margin-bottom: 8px; line-height: 1.6; }
+#crastore-lp .stance span { font-size: 14.5px; color: var(--muted); line-height: 1.8; }
+/* 証拠のつくり方 */
+#crastore-lp .evidence { margin-top: 8px; counter-reset: ev; }
+#crastore-lp .evidence li { position: relative; padding: 20px 0 20px 54px; border-bottom: 1px solid var(--line); }
+#crastore-lp .evidence li:last-child { border-bottom: none; padding-bottom: 0; }
+#crastore-lp .evidence li::before {
+  counter-increment: ev; content: counter(ev);
+  position: absolute; left: 0; top: 20px; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--ink); color: #fff; display: grid; place-items: center;
+  font-family: var(--font-en); font-weight: 800; font-size: 14px;
+}
+#crastore-lp .evidence strong { display: block; font-size: 16.5px; font-weight: 700; margin-bottom: 4px; line-height: 1.7; }
+#crastore-lp .evidence span { font-size: 15px; color: var(--muted); line-height: 1.8; }
+/* 対象になりにくい例 */
+#crastore-lp .ins-targets.is-off li { background: #eef0f2; color: var(--muted); border-color: var(--line); font-weight: 500; }
+/* 保険会社・鑑定人の方へ */
+#crastore-lp .adjuster { margin-top: 30px; background: var(--ink); color: #fff; border-radius: var(--radius); padding: 32px 36px; }
+#crastore-lp .adjuster h4 { font-family: var(--font-head); font-size: 19px; font-weight: 800; letter-spacing: .04em; margin-bottom: 14px; color: #fff; }
+#crastore-lp .adjuster p { font-size: 15px; color: #c0c7d0; line-height: 1.85; max-width: 48em; }
+#crastore-lp .adjuster p + p { margin-top: 10px; }
 #crastore-lp .notice p { font-size: 14.5px; color: var(--muted); line-height: 1.85; }
 #crastore-lp .notice p + p { margin-top: 8px; }
 
@@ -504,6 +536,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 @media (max-width: 1000px) {
   #crastore-lp .case-grid { grid-template-columns: repeat(2, 1fr); }
   #crastore-lp .ins-grid { grid-template-columns: 1fr; gap: 24px; }
+  #crastore-lp .stance { grid-template-columns: 1fr; }
   #crastore-lp .rescue-voices { grid-template-columns: 1fr; }
   #crastore-lp .rescue-reasons { grid-template-columns: 1fr; }
 }
@@ -541,6 +574,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   #crastore-lp .case-foot { flex-direction: column; align-items: stretch; text-align: center; }
   #crastore-lp .case-foot .btn-primary { width: 100%; }
   #crastore-lp .rescue-answer { padding: 30px 24px; }
+  #crastore-lp .adjuster { padding: 26px 22px; }
   #crastore-lp .ig-inner { padding: 28px 24px; }
   #crastore-lp .btn-ig { width: 100%; }
 
@@ -622,7 +656,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
         <span><span class="ck" aria-hidden="true">✓</span>しつこい営業なし</span>
       </p>
       <ul class="hero-points">
-        <li><span class="dot" aria-hidden="true">●</span>火災保険の申請サポートに対応</li>
+        <li><span class="dot" aria-hidden="true">●</span>火災保険は調査と証拠書類から。成功報酬なし</li>
         <li><span class="dot" aria-hidden="true">●</span>他社で断られた工事もご相談ください</li>
         <li><span class="dot" aria-hidden="true">●</span>一箇所だけの補修から対応</li>
       </ul>
@@ -659,7 +693,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
           <li>
             <span class="ng">「保険が絡む工事は扱わない」</span>
             <strong>火災保険の申請に慣れています</strong>
-            <span class="d">被害の調査から、申請に必要な写真・見積書の作成、認定後の施工まで一貫して対応します。</span>
+            <span class="d">被害の調査から、申請に必要な写真・所見・見積書の作成、認定後の施工まで一貫して対応します。</span>
           </li>
         </ul>
       </div>
@@ -670,13 +704,69 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   <section class="insurance" id="insurance" aria-labelledby="insTitle">
     <div class="wrap">
       <p class="sec-label">Insurance</p>
-      <h2 class="sec-title" id="insTitle">その傷み、火災保険で直せるかもしれません。</h2>
+      <h2 class="sec-title" id="insTitle">保険金を決めるのは、保険会社です。<br>私たちの仕事は、正しい証拠を揃えること。</h2>
       <p class="sec-lead">
         火災保険は、火事だけの保険ではありません。台風・大雨・雪・落雷・飛来物といった自然災害による建物の破損も、
-        契約内容によっては補償の対象になります。「知らずに自費で直した」「申請が面倒で諦めた」という方が少なくありません。
+        契約内容によっては補償の対象になります。ただし、対象かどうかを判断するのは保険会社です。
+        だからこそ大切なのは、<strong>被害の事実を、第三者が見て判断できる形の証拠と書類にすること</strong>。
+        それは建物を実際に直す建設会社の専門領域です。
       </p>
 
+      <ul class="stance">
+        <li class="reveal">
+          <strong>判断するのは、保険会社</strong>
+          <span>当社は「必ず下ります」とは申し上げません。調査のうえ、対象になりそうかどうか、その根拠とあわせて正直にご報告します。難しいと判断すれば、そのようにお伝えします。</span>
+        </li>
+        <li class="reveal">
+          <strong>事実に基づく書類だけを作る</strong>
+          <span>経年劣化を災害によるものとして記載することはありません。災害起因と判断できる部分と、そうでない部分を分けて明記します。誇張した数量も計上しません。</span>
+        </li>
+        <li class="reveal">
+          <strong>成功報酬はいただかない</strong>
+          <span>当社がいただくのは工事代金だけです。保険金の一部を手数料として受け取ることはありません。認定額に応じて報酬が増える仕組みではないため、過大な請求をする動機がありません。</span>
+        </li>
+      </ul>
+
       <div class="ins-grid">
+        <div class="ins-card reveal">
+          <h3><span class="ic" aria-hidden="true">📋</span>証拠書類のつくり方</h3>
+          <ol class="evidence">
+            <li>
+              <strong>現地調査で被害箇所を特定する</strong>
+              <span>屋根・外壁・雨樋・付帯設備まで確認し、どの部位がどう壊れているかを記録します。</span>
+            </li>
+            <li>
+              <strong>全景・中景・近景の3段階で撮影する</strong>
+              <span>建物のどこなのかが分かる全景から、破損の状態が分かる近景まで。スケールを当てて寸法が読めるように撮影し、撮影日を残します。</span>
+            </li>
+            <li>
+              <strong>災害との関連を所見として書く</strong>
+              <span>破損の形状・方向・範囲から、風や飛来物など何によるものと考えられるかを、根拠とともに記載します。断定できない箇所は、断定できないと書きます。</span>
+            </li>
+            <li>
+              <strong>復旧に必要な工事を積算する</strong>
+              <span>被害を直すために必要な範囲・数量・単価を明示した修理見積書を作成します。実際に施工する会社が出す見積書なので、金額に施工の裏付けがあります。</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="ins-card reveal">
+          <h3><span class="ic" aria-hidden="true">🤝</span>申請までの流れ</h3>
+          <ul class="ins-support">
+            <li><span class="ck" aria-hidden="true">1</span><span><strong>ご相談・現地調査</strong>（無料）。建物を拝見し、被害の状況を確認します。</span></li>
+            <li><span class="ck" aria-hidden="true">2</span><span><strong>調査結果のご報告</strong>。対象になりそうか、根拠とあわせて正直にお伝えします。</span></li>
+            <li><span class="ck" aria-hidden="true">3</span><span><strong>書類一式をお渡し</strong>。被害写真・所見・修理見積書をご用意します。</span></li>
+            <li><span class="ck" aria-hidden="true">4</span><span><strong>お客様のお名前で保険会社へ申請</strong>。保険金請求はご契約者の権利のため、申請者はお客様です。書き方が分からない箇所はご説明します。</span></li>
+            <li><span class="ck" aria-hidden="true">5</span><span><strong>鑑定人の現地調査に立会い</strong>。技術的な内容について、その場でご説明します。</span></li>
+            <li><span class="ck" aria-hidden="true">6</span><span><strong>認定内容に沿って施工</strong>。認定されなかった場合、工事を無理にお勧めすることはありません。</span></li>
+          </ul>
+          <p style="margin-top:18px;font-size:14.5px;color:var(--muted);">
+            調査・写真撮影・見積書の作成までは無料です。申請するかどうかは、内容をご確認のうえお客様がお決めください。
+          </p>
+        </div>
+      </div>
+
+      <div class="ins-grid" style="margin-top:28px;">
         <div class="ins-card reveal">
           <h3><span class="ic" aria-hidden="true">🏠</span>対象になりうる被害の例</h3>
           <ul class="ins-targets">
@@ -695,15 +785,17 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
         </div>
 
         <div class="ins-card reveal">
-          <h3><span class="ic" aria-hidden="true">🤝</span>Crastoreがお手伝いすること</h3>
-          <ul class="ins-support">
-            <li><span class="ck" aria-hidden="true">✓</span><span>建物を調査し、災害による被害かどうかを確認します</span></li>
-            <li><span class="ck" aria-hidden="true">✓</span><span>申請に必要な被害写真・修理見積書を作成します</span></li>
-            <li><span class="ck" aria-hidden="true">✓</span><span>保険会社・鑑定人の現地調査に立ち会います</span></li>
-            <li><span class="ck" aria-hidden="true">✓</span><span>認定後の修繕工事まで、同じ窓口で対応します</span></li>
+          <h3><span class="ic" aria-hidden="true">🚫</span>対象になりにくい例</h3>
+          <ul class="ins-targets is-off">
+            <li>経年劣化による傷み</li>
+            <li>施工不良が原因のもの</li>
+            <li>故意・過失による破損</li>
+            <li>被害額が免責金額に満たない場合</li>
+            <li>災害との関連が確認できないもの</li>
           </ul>
           <p style="margin-top:18px;font-size:14.5px;color:var(--muted);">
-            調査・写真撮影・見積書の作成までは無料です。申請するかどうかは、内容をご確認のうえお客様がお決めください。
+            調査の結果これらに当たると判断した場合は、その旨をはっきりお伝えします。無理に申請をお勧めすることはありません。
+            自費での修繕をご希望であれば、そのお見積りをお出しします。
           </p>
         </div>
       </div>
@@ -712,15 +804,27 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
       <p style="margin-top:28px;font-size:17px;font-weight:700;">これまでに〇〇件の申請をサポートしてきました。</p>
       -->
 
+      <div class="adjuster reveal">
+        <h4>保険会社・鑑定人のみなさまへ</h4>
+        <p>
+          当社は、被害の事実を正確に記録し、復旧に必要な工事を過不足なく積算することを方針としています。
+          災害との関連が確認できない部分は、その旨を所見に明記します。
+        </p>
+        <p>
+          現地調査には立会い、施工者の立場から技術的な根拠をご説明します。追加の資料や撮り直しのご要請にも対応します。
+          事実と異なる内容での請求には、いかなる場合も関与いたしません。
+        </p>
+      </div>
+
       <div class="notice reveal">
-        <h4>ご確認ください</h4>
-        <p>保険金が支払われるかどうかを判断するのは保険会社です。当社が支払いをお約束することはできません。調査のうえ、対象になりそうかどうかを正直にお伝えします。</p>
-        <p>経年劣化による傷みは、原則として補償の対象外です。また、事実と異なる内容での請求は保険金詐欺にあたります。当社はそうした申請には一切関与しません。</p>
-        <p>当社は工事を行う建設会社です。保険金請求の代行は行っておらず、成功報酬として保険金の一部をいただくこともありません。</p>
+        <h4>当社が行わないこと</h4>
+        <p>保険金請求の代行は行いません。保険金の請求はご契約者ご本人の権利であり、申請はお客様のお名前で行っていただきます。当社は、申請に必要な調査と書類の作成、および現地調査への立会いという、建設会社としての役割を担います。</p>
+        <p>保険会社との交渉の代理は行いません。認定内容にご不満がある場合は、保険会社の相談窓口や、そんぽADRセンター（一般社団法人 日本損害保険協会）などの公的な窓口をご案内します。</p>
+        <p>成功報酬として保険金の一部をいただくこと、解約時に違約金を請求すること、事実と異なる内容での請求に関与することは、いずれもいたしません。</p>
       </div>
 
       <div class="hero-actions" style="margin-top:32px;">
-        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">保険が使えるか相談する（無料）<span class="sr-only">（別ウィンドウで開きます）</span></a>
+        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdBUp0AiToCTNpuIc2SUtL-OgPQmXUOQzQvQeFdxQH2OiliqA/viewform" target="_blank" rel="noopener">まず建物を見てもらう（調査無料）<span class="sr-only">（別ウィンドウで開きます）</span></a>
       </div>
     </div>
   </section>
@@ -807,7 +911,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
         <div class="svc is-main reveal">
           <div class="svc-icon" aria-hidden="true">🛡️</div>
           <h3>火災保険を活用した修繕 <span class="badge-main">得意分野</span></h3>
-          <p>台風・大雨・雪などの自然災害による被害の修繕。調査から申請書類の作成、認定後の施工まで対応します。</p>
+          <p>台風・大雨・雪などの自然災害による被害の修繕。現地調査と証拠書類の作成を担い、認定後の施工まで一貫して対応します。判断は保険会社、成功報酬はいただきません。</p>
         </div>
         <div class="svc is-main reveal">
           <div class="svc-icon" aria-hidden="true">🛠️</div>
@@ -913,11 +1017,15 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
         </details>
         <details>
           <summary>火災保険は、本当に使えるのでしょうか？</summary>
-          <div class="ans">自然災害による破損であれば、契約内容によって対象になる可能性があります。ただし、支払いを判断するのは保険会社であり、当社がお約束することはできません。まず建物を調査し、対象になりそうかどうかを正直にお伝えします。経年劣化は原則として対象外です。</div>
+          <div class="ans">自然災害による破損であれば、契約内容によって対象になる可能性があります。ただし、支払いを判断するのは保険会社であり、当社がお約束することはできません。まず建物を調査し、対象になりそうかどうかを根拠とあわせて正直にお伝えします。難しいと判断すればそのようにお伝えし、無理に申請をお勧めすることはありません。経年劣化は原則として対象外です。</div>
         </details>
         <details>
           <summary>保険の申請サポートに費用はかかりますか？</summary>
-          <div class="ans">調査・写真撮影・修理見積書の作成までは無料です。保険金の一部を成功報酬としていただくことはありません。当社は工事を行う建設会社で、保険金請求の代行業者ではありません。</div>
+          <div class="ans">調査・写真撮影・修理見積書の作成までは無料です。保険金の一部を成功報酬としていただくことはありません。認定額に応じて報酬が増える仕組みではないため、過大な請求をする動機がそもそもありません。いただくのは工事代金だけです。</div>
+        </details>
+        <details>
+          <summary>申請は自分でやるのですか？代行してもらえますか？</summary>
+          <div class="ans">保険金の請求はご契約者ご本人の権利のため、申請はお客様のお名前で行っていただきます。当社は、申請に必要な現地調査・被害写真・所見・修理見積書の作成と、鑑定人の現地調査への立会いを担当します。書き方が分からない箇所はご説明しますので、ご負担は写真や書類を保険会社へ送っていただく程度です。なお、保険会社との交渉を代理することはいたしません。</div>
         </details>
         <details>
           <summary>見積りだけでも大丈夫ですか？</summary>
@@ -1045,7 +1153,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   "alternateName": "株式会社クラストア",
   "url": "https://crastore.xyz/",
   "telephone": "+81-50-3700-3996",
-  "description": "大阪の改修・リフォーム専門の建設会社。火災保険を活用した修繕、他社で断られた工事にも対応します。ご相談・現地調査・お見積りは無料です。",
+  "description": "大阪の改修・リフォーム専門の建設会社。自然災害による被害の調査と証拠書類の作成を行い、火災保険を使った修繕に対応します（保険金の判断は保険会社、成功報酬はいただきません）。他社で断られた工事のご相談も承ります。調査・お見積りは無料です。",
   "sameAs": ["https://www.instagram.com/crastore_inc/"],
   "address": {
     "@type": "PostalAddress",
