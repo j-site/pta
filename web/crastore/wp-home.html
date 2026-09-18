@@ -15,7 +15,7 @@
 ============================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Archivo:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ===== WordPressテーマ側の要素を隠す ===== */
 #header-section, #above-header, .header-above-info, .main-mobile-menu,
@@ -54,8 +54,14 @@ html, body { overflow-x: hidden; }
   --radius: 14px;
   --header-h: 68px;
 
+  /* 書体（差し替えはこの3行と、冒頭の <link href="...fonts.googleapis.com..."> を変更するだけ）
+     --font-head: 大見出し（明朝）／--font-jp: 本文（ゴシック）／--font-en: 英数字 */
+  --font-head: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-jp: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --font-en: "Archivo", "Helvetica Neue", Arial, sans-serif;
+
   width: 100%;
-  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-family: var(--font-jp);
   color: var(--ink);
   background: var(--paper);
   line-height: 1.9;
@@ -83,7 +89,7 @@ html { scroll-behavior: smooth; }
 
 /* ===== logo ===== */
 #crastore-lp .logotype {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-en);
   font-weight: 800; letter-spacing: .06em;
   font-size: 22px; color: var(--ink); white-space: nowrap; line-height: 1.2;
 }
@@ -108,7 +114,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 /* 頼みやすさ: PCヘッダーに電話番号を常設 */
 #crastore-lp .head-tel { display: flex; flex-direction: column; line-height: 1.35; text-align: right; }
 #crastore-lp .head-tel .num {
-  font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 20px;
+  font-family: var(--font-en); font-weight: 800; font-size: 20px;
   color: var(--ink); letter-spacing: .02em;
 }
 #crastore-lp .head-tel .sub { font-size: 11px; color: var(--muted); }
@@ -151,8 +157,9 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   padding: 6px 18px; margin-bottom: 24px;
 }
 #crastore-lp .hero h1 {
+  font-family: var(--font-head);
   font-size: clamp(24px, 4.4vw, 44px);   /* 狭い画面で「まで。」だけが行に残らない大きさ */
-  font-weight: 900; line-height: 1.5; letter-spacing: .01em; color: #fff;
+  font-weight: 800; line-height: 1.55; letter-spacing: .04em; color: #fff;
 }
 #crastore-lp .hero h1 .accent { color: var(--accent); }
 #crastore-lp .hero-lead {
@@ -181,7 +188,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   transition: border-color .2s, background .2s; line-height: 1.35;
 }
 #crastore-lp .btn-tel-hero:hover { border-color: #fff; background: rgba(255,255,255,.08); }
-#crastore-lp .btn-tel-hero .num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 24px; letter-spacing: .03em; }
+#crastore-lp .btn-tel-hero .num { font-family: var(--font-en); font-weight: 800; font-size: 24px; letter-spacing: .03em; }
 #crastore-lp .btn-tel-hero .sub { font-size: 12px; color: #b4bcc6; }
 #crastore-lp .cta-note {
   margin-top: 16px; font-size: 14px; color: #b4bcc6;
@@ -206,15 +213,16 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 /* ===== sections ===== */
 #crastore-lp section { padding: 88px 0; }
 #crastore-lp .sec-label {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-en);
   font-weight: 800; font-size: 13px; letter-spacing: .22em;
   color: var(--accent-deep); text-transform: uppercase;
   display: flex; align-items: center; gap: 14px;
 }
 #crastore-lp .sec-label::after { content: ""; width: 48px; height: 2px; background: var(--accent); }
 #crastore-lp .sec-title {
+  font-family: var(--font-head);
   font-size: clamp(25px, 3.2vw, 35px);
-  font-weight: 900; line-height: 1.55; letter-spacing: .02em;
+  font-weight: 800; line-height: 1.6; letter-spacing: .04em;
   margin: 14px 0 18px; color: inherit;
 }
 #crastore-lp .sec-lead { color: var(--muted); max-width: 34em; font-size: 16px; }
@@ -240,7 +248,8 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   border-radius: var(--radius); padding: 40px 44px;
 }
 #crastore-lp .rescue-answer h3 {
-  font-size: clamp(20px, 2.6vw, 28px); font-weight: 900; line-height: 1.6; color: #fff;
+  font-family: var(--font-head);
+  font-size: clamp(20px, 2.6vw, 28px); font-weight: 800; line-height: 1.65; letter-spacing: .04em; color: #fff;
 }
 #crastore-lp .rescue-answer h3 .accent { color: var(--accent); }
 #crastore-lp .rescue-answer > p { margin-top: 16px; color: #c0c7d0; font-size: 16px; max-width: 42em; }
@@ -315,7 +324,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   transition: box-shadow .25s, transform .25s, border-color .25s;
 }
 #crastore-lp .card:hover { box-shadow: 0 16px 40px rgba(20,23,28,.10); transform: translateY(-4px); border-color: transparent; }
-#crastore-lp .card-num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 13px; letter-spacing: .15em; color: var(--accent-deep); }
+#crastore-lp .card-num { font-family: var(--font-en); font-weight: 800; font-size: 13px; letter-spacing: .15em; color: var(--accent-deep); }
 #crastore-lp .card h3 { font-size: 19px; font-weight: 700; margin: 10px 0 12px; color: inherit; line-height: 1.6; }
 #crastore-lp .card p { font-size: 15px; color: var(--muted); }
 
@@ -323,7 +332,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 #crastore-lp .reno { background: var(--ink); color: #fff; position: relative; overflow: hidden; }
 #crastore-lp .reno::before {
   content: "RENOVATION"; position: absolute; right: -10px; bottom: -28px;
-  font-family: "Montserrat", sans-serif; font-weight: 800;
+  font-family: var(--font-en); font-weight: 800;
   font-size: clamp(60px, 11vw, 130px); letter-spacing: .04em;
   color: rgba(255,255,255,.045); pointer-events: none;
 }
@@ -380,7 +389,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 #crastore-lp .flow-step.is-first { border-color: var(--accent); border-width: 2px; }
 #crastore-lp .flow-step::before {
   counter-increment: step; content: "0" counter(step);
-  font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 26px;
+  font-family: var(--font-en); font-weight: 800; font-size: 26px;
   color: var(--accent-deep); display: block; margin-bottom: 8px;
 }
 #crastore-lp .flow-step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: inherit; }
@@ -414,7 +423,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 24px; border: 1px solid var(--line); border-radius: var(--radius); padding: 34px 38px;
 }
-#crastore-lp .ig-inner h2 { font-size: clamp(20px, 2.4vw, 26px); font-weight: 900; line-height: 1.6; color: inherit; }
+#crastore-lp .ig-inner h2 { font-family: var(--font-head); font-size: clamp(20px, 2.4vw, 26px); font-weight: 800; line-height: 1.65; letter-spacing: .04em; color: inherit; }
 #crastore-lp .ig-inner p { margin-top: 10px; font-size: 15.5px; color: var(--muted); max-width: 34em; }
 #crastore-lp .btn-ig {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
@@ -458,7 +467,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   transition: border-color .2s, background .2s;
 }
 #crastore-lp .contact-tel:hover { border-color: #fff; background: rgba(255,255,255,.06); }
-#crastore-lp .contact-tel .num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 28px; letter-spacing: .04em; }
+#crastore-lp .contact-tel .num { font-family: var(--font-en); font-weight: 800; font-size: 28px; letter-spacing: .04em; }
 #crastore-lp .contact-tel .hours { font-size: 13px; color: #b4bcc6; }
 #crastore-lp .contact .cta-note { justify-content: center; margin-top: 22px; }
 #crastore-lp .btn-line {
@@ -546,7 +555,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
     line-height: 1.3; box-shadow: 0 10px 28px rgba(20,23,28,.3);
   }
   #crastore-lp .sticky-cta .s-tel { background: #fff; color: var(--ink) !important; border: 1.5px solid var(--line); }
-  #crastore-lp .sticky-cta .s-tel .num { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 17px; }
+  #crastore-lp .sticky-cta .s-tel .num { font-family: var(--font-en); font-weight: 800; font-size: 17px; }
   #crastore-lp .sticky-cta .s-tel .sub,
   #crastore-lp .sticky-cta .s-form .sub { font-size: 11px; font-weight: 500; opacity: .85; }
   #crastore-lp .sticky-cta .s-form { background: var(--accent-btn); color: #fff !important; }
