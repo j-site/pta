@@ -11,15 +11,15 @@
   株式会社Crastore ホームページ（WordPress貼り付け用）
   4つの事業を軸にしたシンプル版
     1. 建築（改修・リフォーム・原状回復／火災保険を使った修繕）
-    2. 船舶（補修・塗装）
-    3. 錆止め（5,500円/㎡ 税別）
+    2. 船舶（船の外部工事・内装工事）
+    3. 錆止め（錆を変化させて再発を抑える工法／5,500円/㎡ 税別／単体で依頼可）
     4. 室内の除菌・消臭
 
   使い方: 固定ページの「カスタムHTML」ブロックにこのファイルの
   中身を丸ごと貼り付けて公開し、設定→表示設定でホームページに指定
 
   ▼ 公開前に確認・記入をおすすめする箇所（ファイル内を「要確認」で検索）
-    1. 錆止め単価に含まれる作業範囲（下地処理・塗装回数・足場・最低面積）
+    1. 錆止め：単価に含まれる範囲（足場・最低面積）、再発を抑えられる期間の目安と根拠
     2. 船舶で対応できる船の種類・作業場所
     3. 除菌消臭で対応できる現場の範囲
     4. 対応エリアの表記
@@ -289,6 +289,16 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 }
 #crastore-lp .sub-lead { margin-top: 10px; color: var(--muted); max-width: 40em; }
 
+/* ===== 錆止め：一般的な方法との比較 ===== */
+#crastore-lp .compare { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+#crastore-lp .compare > div { border-radius: var(--radius); padding: 26px 26px; }
+#crastore-lp .compare .them { background: var(--paper); border: 1px solid var(--line); }
+#crastore-lp .compare .us { background: var(--paper); border: 2px solid var(--accent); }
+#crastore-lp .compare .who { font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--muted); }
+#crastore-lp .compare .us .who { color: var(--accent-deep); }
+#crastore-lp .compare h4 { font-family: var(--font-head); font-size: 20px; font-weight: 800; letter-spacing: .04em; line-height: 1.55; margin: 6px 0 10px; }
+#crastore-lp .compare p { font-size: 15px; color: var(--muted); line-height: 1.85; }
+
 /* ===== 錆止め：価格パネルと流れ ===== */
 #crastore-lp .rust-grid { margin-top: 30px; display: grid; grid-template-columns: .9fr 1.1fr; gap: 24px; align-items: start; }
 #crastore-lp .price-panel {
@@ -436,7 +446,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 /* ===== responsive ===== */
 @media (max-width: 1000px) {
   #crastore-lp .points { grid-template-columns: 1fr; }
-  #crastore-lp .rust-grid, #crastore-lp .more-grid { grid-template-columns: 1fr; }
+  #crastore-lp .rust-grid, #crastore-lp .more-grid, #crastore-lp .compare { grid-template-columns: 1fr; }
 }
 @media (max-width: 1080px) {
   #crastore-lp .head-tel { display: none; }
@@ -527,7 +537,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
       <p class="hero-tag">大阪・船場の建設会社</p>
       <h1 id="heroTitle">建物も、船も、<br><span class="accent">室内の空気も。</span></h1>
       <p class="hero-lead">
-        Crastore(クラストア)は、建物の改修・修繕、船舶の補修・塗装、鉄部の錆止め、室内の除菌・消臭を手がける大阪の建設会社です。
+        Crastore(クラストア)は、建物の改修・修繕、船の外装・内装工事、錆を変化させて再発を抑える錆止め、室内の除菌・消臭を手がける大阪の建設会社です。
         写真を1枚送っていただくだけで、お見積りが始められます。
       </p>
       <a class="hero-news" href="#rust">
@@ -570,7 +580,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
             <span class="cat-icon" aria-hidden="true">⚓</span>
             <div><p class="cat-num">02</p><h3>船舶</h3></div>
           </div>
-          <p>海水と潮風にさらされる船体・甲板の錆止め、塗装の補修。鉄部の扱いに慣れた職人が対応します。</p>
+          <p>船の外部の工事から、船室の床・壁・天井などの内装工事まで。建築で培った技術で対応します。</p>
           <a class="cat-more" href="#marine">詳しく見る →</a>
         </article>
         <article class="cat is-new reveal">
@@ -579,7 +589,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
             <span class="cat-icon" aria-hidden="true">🛡️</span>
             <div><p class="cat-num">03</p><h3>錆止め</h3></div>
           </div>
-          <p>鉄骨階段、手すり、フェンス、屋根、設備架台など。錆が広がる前に止めて、交換や大規模補修を防ぎます。</p>
+          <p>錆を落として塗るのではなく、錆そのものを変化させて再発を抑える錆止め。塗装とは別に、錆止めだけでご依頼いただけます。</p>
           <p class="cat-price"><b>5,500</b>円／㎡ <small>（税込6,050円）</small></p>
           <a class="cat-more" href="#rust">詳しく見る →</a>
         </article>
@@ -692,18 +702,19 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   <section id="marine" aria-labelledby="marineTitle">
     <div class="wrap">
       <p class="sec-label">02 Marine</p>
-      <h2 class="sec-title" id="marineTitle">船舶の錆止め・塗装補修も、<br>ご相談ください。</h2>
-      <p class="sec-lead">海水と潮風にさらされる船舶は、錆との戦いです。鉄部の錆止めで培った下地処理と塗装の技術で、船体・甲板・鋼材部の補修に対応します。</p>
+      <h2 class="sec-title" id="marineTitle">船の外まわりも、<br>船室の内装も。</h2>
+      <p class="sec-lead">船の外部の工事から、船室の内装工事まで対応します。限られた空間での納まりや、揺れ・湿気を考えた仕上げなど、建築の改修で培った技術を船にも生かします。</p>
       <ul class="chips">
-        <li>船体・甲板の錆止め</li>
-        <li>塗装の補修・塗り替え</li>
-        <li>鋼材部の補修</li>
-        <li>手すり・架台など艤装品まわり</li>
+        <li>船の外部の工事</li>
+        <li>デッキまわりの補修</li>
+        <li>船室の床・壁・天井</li>
+        <li>内装のリフォーム</li>
+        <li>建具・収納の取り付け</li>
       </ul>
       <!-- ▼要確認: 対応できる船の種類（漁船・プレジャーボート・作業船など）、作業場所（陸揚げ・係留中）、対応エリアを追記してください -->
       <p class="note">船の種類・大きさ・作業場所によって対応方法が変わります。まずは写真と船の概要をお送りください。</p>
       <div class="sec-cta">
-        <a class="btn-primary" href="https://staffpro.jp/" target="_blank" rel="noopener">船舶の補修を相談する（無料）<span class="sr-only">（別ウィンドウで開きます）</span></a>
+        <a class="btn-primary" href="https://staffpro.jp/" target="_blank" rel="noopener">船舶の工事を相談する（無料）<span class="sr-only">（別ウィンドウで開きます）</span></a>
       </div>
     </div>
   </section>
@@ -712,25 +723,38 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   <section class="soft" id="rust" aria-labelledby="rustTitle">
     <div class="wrap">
       <p class="sec-label">03 Rust Proofing</p>
-      <h2 class="sec-title" id="rustTitle">錆は、広がる前に止める。</h2>
-      <p class="sec-lead">鉄は一度錆びはじめると、表面から内側へと進行します。放置すれば強度が落ち、部材ごとの交換や大がかりな補修が必要になります。早めの錆止めが、いちばんの節約です。</p>
+      <h2 class="sec-title" id="rustTitle">錆を隠すのではなく、<br>錆そのものを変える。</h2>
+      <p class="sec-lead">鉄は一度錆びはじめると、表面から内側へと進行します。Crastoreの錆止めは、錆を変化させて安定させることで、長期にわたって錆が再発しにくい状態をつくります。</p>
+
+      <div class="compare">
+        <div class="them reveal">
+          <p class="who">一般的な錆止め（塗装工事）</p>
+          <h4>錆止め剤を塗り、<br>その上から塗装する</h4>
+          <p>塗膜で錆を覆う方法です。塗膜に傷やひびが入ると、そこから再び錆が進みやすくなります。塗装工事の一工程として行われるのが一般的です。</p>
+        </div>
+        <div class="us reveal">
+          <p class="who">Crastoreの錆止め</p>
+          <h4>錆そのものを変化させ、<br>再発を長期的に抑える</h4>
+          <p>錆を覆うのではなく、錆自体を変化させて安定させます。塗装とは別に、錆止めだけをご依頼いただけます。</p>
+          <!-- ▼要確認: 使用する製品・工法の名称、再発を抑えられる期間の目安と、その根拠（試験データ・メーカー資料など）があれば追記すると説得力が増します。根拠のない年数は記載しないでください -->
+        </div>
+      </div>
 
       <div class="rust-grid">
         <div class="price-panel reveal">
           <p class="lbl">錆止め施工</p>
           <p class="amt"><b>5,500円</b><span class="u">／㎡</span></p>
           <p class="tax">税込 6,050円／㎡</p>
-          <!-- ▼要確認: 単価に含まれる作業範囲（ケレン等の下地処理・塗装回数）、足場、最低施工面積・最低料金の扱いを明記すると問い合わせ後の行き違いが減ります -->
-          <p class="pn">錆の進行度合い、足場の要否、施工面積によって別途費用が発生する場合があります。現地を確認のうえ、正式なお見積りをお出しします。</p>
+          <!-- ▼要確認: 単価に含まれる範囲、足場、最低施工面積・最低料金の扱いを明記すると問い合わせ後の行き違いが減ります -->
+          <p class="pn">錆止め単体の価格です（塗装は含みません）。錆の進行度合い、足場の要否、施工面積によって別途費用が発生する場合があります。現地を確認のうえ、正式なお見積りをお出しします。</p>
         </div>
         <div class="steps reveal">
           <h4>施工の流れ</h4>
           <ol>
             <li>写真の送付・現地確認<span>錆の範囲と進行度合いを確認します。</span></li>
             <li>お見積り<span>面積と作業内容を明示します。ここまで無料です。</span></li>
-            <li>下地処理<span>錆や劣化した旧塗膜を落とし、塗料が密着する面をつくります。</span></li>
-            <li>錆止め塗装</li>
-            <li>仕上がりの確認・お引き渡し</li>
+            <li>錆止めの施工<span>錆を変化させて安定させる処理を行います。</span></li>
+            <li>仕上がりの確認・お引き渡し<span>塗装による仕上げをご希望の場合は、別途ご相談ください。</span></li>
           </ol>
         </div>
       </div>
@@ -744,7 +768,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
         <li>トタン・折板屋根</li>
         <li>鉄骨の柱・梁</li>
         <li>設備架台・看板支柱</li>
-        <li>船舶の鋼材部</li>
+        <li>鉄製の倉庫・車庫</li>
       </ul>
       <div class="sec-cta">
         <a class="btn-primary" href="https://staffpro.jp/" target="_blank" rel="noopener">錆止めの見積りを依頼する（無料）<span class="sr-only">（別ウィンドウで開きます）</span></a>
@@ -810,8 +834,12 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
       <h2 class="sec-title" id="faqTitle">よくあるご質問</h2>
       <div class="faq-list">
         <details open>
+          <summary>塗装屋さんの錆止めと、何が違うのですか？</summary>
+          <div class="ans">一般的な錆止めは、錆止め剤を塗ってその上から塗装し、塗膜で錆を覆う方法です。当社の錆止めは、錆そのものを変化させて安定させ、長期的に錆が再発しにくい状態をつくります。塗装とは別の工事として、錆止めだけをご依頼いただけます。</div>
+        </details>
+        <details>
           <summary>錆止めの5,500円／㎡には、何が含まれますか？</summary>
-          <div class="ans">錆止め施工の平米単価です（税別。税込6,050円）。錆の進行度合いや足場の要否、施工面積によって別途費用が発生する場合があるため、現地を確認したうえで、作業内容を明示した正式なお見積りをお出しします。お見積りまでは無料です。</div>
+          <div class="ans">錆止め単体の平米単価です（税別。税込6,050円）。塗装は含みません。錆の進行度合いや足場の要否、施工面積によって別途費用が発生する場合があるため、現地を確認したうえで、作業内容を明示した正式なお見積りをお出しします。お見積りまでは無料です。</div>
         </details>
         <details>
           <summary>他社に断られた工事でも、相談していいのですか？</summary>
@@ -850,7 +878,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
             <tr><th scope="row">TEL</th><td><a href="tel:05037003996">050-3700-3996</a></td></tr>
             <tr><th scope="row">営業時間</th><td>9:00〜17:00</td></tr>
             <tr><th scope="row">対応エリア</th><td>大阪府を中心に対応<!-- ▼要確認: 実際の対応範囲に合わせて書き換えてください --></td></tr>
-            <tr><th scope="row">事業内容</th><td>建築工事（改修・リフォーム・原状回復・火災保険を活用した修繕）／船舶の補修・塗装／鉄部の錆止め施工／室内の除菌・消臭</td></tr>
+            <tr><th scope="row">事業内容</th><td>建築工事（改修・リフォーム・原状回復・火災保険を活用した修繕）／船舶の外装・内装工事／錆止め施工（錆を変化させて再発を抑える工法）／室内の除菌・消臭</td></tr>
             <tr><th scope="row">登録</th><td>適格請求書発行事業者(登録番号 T9122001026672)</td></tr>
             <tr><th scope="row">Instagram</th><td><a href="https://www.instagram.com/crastore_inc/" target="_blank" rel="noopener">@crastore_inc</a></td></tr>
           </tbody>
@@ -864,7 +892,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
     <div class="wrap">
       <p class="sec-label">Contact</p>
       <h2 class="sec-title" id="contactTitle">「これって直る？」から、始めましょう。</h2>
-      <p class="sec-lead">建物、船舶、錆、室内の臭い。どの事業のご相談も、写真1枚から受け付けています。</p>
+      <p class="sec-lead">建物、船、錆、室内の臭い。どの事業のご相談も、写真1枚から受け付けています。</p>
       <div class="contact-actions">
         <a class="btn-primary" href="https://staffpro.jp/" target="_blank" rel="noopener">お問い合わせ（24時間受付）<span class="sr-only">（別ウィンドウで開きます）</span></a>
         <a class="contact-tel" href="tel:05037003996">
@@ -928,7 +956,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   "alternateName": "株式会社クラストア",
   "url": "https://crastore.xyz/",
   "telephone": "+81-50-3700-3996",
-  "description": "大阪の建設会社。建物の改修・修繕（火災保険を活用した修繕を含む）、船舶の補修・塗装、鉄部の錆止め施工、室内の除菌・消臭に対応します。調査・お見積りは無料です。",
+  "description": "大阪の建設会社。建物の改修・修繕（火災保険を活用した修繕を含む）、船舶の外装・内装工事、錆を変化させて再発を抑える錆止め施工、室内の除菌・消臭に対応します。調査・お見積りは無料です。",
   "sameAs": ["https://www.instagram.com/crastore_inc/"],
   "address": {
     "@type": "PostalAddress",
