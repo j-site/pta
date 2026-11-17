@@ -1,0 +1,75 @@
+
+  <section class="hero sub-hero" id="top" aria-labelledby="heroTitle">
+    <div class="wrap hero-inner">
+      {{crumb}}
+      <p class="hero-tag">Contact</p>
+      <h1 id="heroTitle">お問い合わせ・<br><span class="accent">無料見積り</span></h1>
+      <p class="hero-lead">「これって直る？」「いくらくらい？」のひと言からで大丈夫です。相談・現地調査・お見積りまで無料。お見積り後のお断りもお気軽にどうぞ。</p>
+    </div>
+  </section>
+
+  <section id="ways" aria-labelledby="waysTitle">
+    <div class="wrap">
+      <p class="sec-label">3 Ways</p>
+      <h2 class="sec-title" id="waysTitle">ご都合のよい方法で</h2>
+      <div class="ways">
+        <div class="way is-main reveal">
+          <p class="k">いちばんおすすめ</p>
+          <h3>フォームで写真を送る</h3>
+          <p>24時間受付。写真を添えていただくと、対応できるか・おおよその費用感を早くお伝えできます。</p>
+          <div class="act"><a class="btn-primary" href="{{form}}" target="_blank" rel="noopener">見積りフォームへ{{newwin}}</a></div>
+        </div>
+        <div class="way reveal">
+          <p class="k">気軽に聞きたいとき</p>
+          <h3>LINEで相談する</h3>
+          <p>友だち追加して、写真やひと言を送ってください。「まだ頼むか決めていない」段階でも構いません。</p>
+          <div class="act"><a href="{{lineurl}}" target="_blank" rel="noopener"><img src="{{lineimg}}" alt="LINEで友だち追加" height="40" border="0"></a></div>
+        </div>
+        <div class="way reveal">
+          <p class="k">急ぎのとき</p>
+          <h3>電話で話す</h3>
+          <p>担当者が直接お話を伺います。急ぎの雨漏りなども、まずはお電話ください。</p>
+          <div class="act"><a class="tel-big" href="{{tellink}}">{{tel}}</a><small>{{hours}}</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft" id="prepare" aria-labelledby="prepTitle">
+    <div class="wrap">
+      <p class="sec-label">Tips</p>
+      <h2 class="sec-title" id="prepTitle">これがあると、話が早く進みます</h2>
+      <p class="sec-lead">分かる範囲で構いません。なくてもご相談いただけます。</p>
+      <ul class="check-list">
+        <li>気になる箇所の写真<span>全体が分かる写真と、近くで撮った写真の2枚があると理想的です。</span></li>
+        <li>場所（市区町村まで）<span>現地調査の日程を組むのに使います。</span></li>
+        <li>いつ頃までに直したいか<span>急ぎかどうかだけでも教えてください。</span></li>
+        <li>船の場合は、船の種類・大きさ・係留場所<span>おおよそで構いません。</span></li>
+        <li>錆止めの場合は、おおよその面積<span>「階段1つ」「フェンス10mくらい」などでも大丈夫です。</span></li>
+        <li>他社で断られた場合は、その理由<span>当社で対応できるかを判断する手がかりになります。</span></li>
+      </ul>
+    </div>
+  </section>
+
+  {{flow}}
+
+  <section class="soft" id="faq" aria-labelledby="faqTitle">
+    <div class="wrap">
+      <p class="sec-label">Q&amp;A</p>
+      <h2 class="sec-title" id="faqTitle">お問い合わせ前のよくあるご質問</h2>
+      <div class="faq-list">
+        <details open>
+          <summary>見積りだけでも大丈夫ですか？</summary>
+          <div class="ans">大丈夫です。ご相談・現地調査・お見積りまで無料です。金額を見てお断りいただいて構いませんし、しつこい営業もいたしません。</div>
+        </details>
+        <details>
+          <summary>どの事業に当てはまるか分からないのですが。</summary>
+          <div class="ans">分からないままで構いません。困っていることと写真を送っていただければ、当社で対応できるかどうかをお伝えします。</div>
+        </details>
+        <details>
+          <summary>対応エリアはどこまでですか？</summary>
+          <div class="ans">大阪府を中心に対応しています。エリア外かどうか迷われる場合も、まずはお問い合わせください。<!-- ▼要確認: 実際の対応範囲に合わせて書き換えてください --></div>
+        </details>
+      </div>
+    </div>
+  </section>

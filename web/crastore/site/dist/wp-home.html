@@ -1,26 +1,16 @@
-<!doctype html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>船の内装工事・船室リフォーム｜プレビュー</title>
-</head>
-<body>
 <!-- wp:html -->
 <!-- ============================================================
-  株式会社Crastore「船の内装工事」専用ページ（WordPress貼り付け用）
+  株式会社Crastore ホームページ ／ ホーム
+  公開URL : https://crastore.xyz/（設定 → 表示設定 →「ホームページ」に指定）
+  ページタイトル : ホーム
+  URLスラッグ   : （自由。表示設定でホームページに指定）
 
-  使い方:
-    1. 固定ページを新規作成し、タイトルを「船の内装工事・船室リフォーム」にする
-    2. パーマリンク（URLスラッグ）を ship-interior にする
-       → https://crastore.xyz/ship-interior/ になります
-         （トップページからこのURLにリンクしているので、スラッグは必ずこの通りに）
-    3. 「カスタムHTML」ブロックにこのファイルの中身を丸ごと貼り付けて公開
+  ▼ 検索結果に出る文言（SEOプラグインや「抜粋」欄があれば設定）
+  タイトル : 大阪の建設会社｜建築・船の内装工事・錆止め・除菌消臭｜株式会社Crastore
+  説明文   : 大阪・船場の建設会社、株式会社Crastore（クラストア）。建物の改修・修繕、火災保険を使った修繕、船の内装・外装工事、錆を変化させて再発を抑える錆止め、室内の除菌・消臭に対応。写真1枚から無料でお見積りします。
 
-  ▼ 公開前に確認・記入をおすすめする箇所（ファイル内を「要確認」で検索）
-    1. 対応できる工事（実際に対応しないものは削除）
-    2. 対応できる船の種類・大きさ、作業場所（陸揚げ・係留中）、対応エリア
-    3. 施工事例（写真付き。コメントアウト中のひな形を使ってください）
+  このファイルは build.py で自動生成しています。直接直さず src/ を直して作り直してください。
+  「要確認」で検索すると、事実の確認・追記が必要な箇所が見つかります。
 ============================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,6 +109,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 #crastore-lp .gnav { display: flex; align-items: center; gap: 22px; }
 #crastore-lp .gnav a { font-size: 15px; font-weight: 500; color: var(--ink-soft); transition: color .2s; white-space: nowrap; }
 #crastore-lp .gnav a:hover { color: var(--accent-deep); }
+#crastore-lp .gnav a[aria-current="page"] { color: var(--accent-deep); font-weight: 700; box-shadow: inset 0 -2px 0 var(--accent); }
 #crastore-lp .head-tel { display: flex; flex-direction: column; line-height: 1.35; text-align: right; }
 #crastore-lp .head-tel .num { font-family: var(--font-en); font-weight: 800; font-size: 20px; color: var(--ink); letter-spacing: .02em; }
 #crastore-lp .head-tel .sub { font-size: 11px; color: var(--muted); }
@@ -276,6 +267,8 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 #crastore-lp .points span.d { font-size: 14.5px; color: var(--muted); line-height: 1.8; }
 #crastore-lp .note { margin-top: 18px; font-size: 14px; color: var(--muted); }
 #crastore-lp .sec-cta { margin-top: 28px; }
+#crastore-lp .more-link { margin-top: 18px; font-size: 15.5px; font-weight: 700; }
+#crastore-lp .more-link a { color: var(--accent-deep) !important; text-decoration: underline; text-underline-offset: 3px; }
 #crastore-lp h3.sub-title {
   font-family: var(--font-head); font-size: clamp(20px, 2.4vw, 26px); font-weight: 800;
   letter-spacing: .04em; line-height: 1.6; margin-top: 48px; color: inherit;
@@ -472,8 +465,8 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 
   /* スマホは常に「電話」と「相談」を画面下に出す */
   #crastore-lp .sticky-cta {
-    display: grid; grid-template-columns: 1fr 1.15fr; gap: 10px;
-    position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 9997;
+    display: grid; grid-template-columns: 1fr .8fr 1.25fr; gap: 8px;
+    position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 9997;
   }
   #crastore-lp .sticky-cta a {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -484,6 +477,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   #crastore-lp .sticky-cta .s-tel .num { font-family: var(--font-en); font-weight: 800; font-size: 17px; }
   #crastore-lp .sticky-cta .sub { font-size: 11px; font-weight: 500; opacity: .85; }
   #crastore-lp .sticky-cta .s-form { background: var(--accent-btn); color: #fff !important; }
+  #crastore-lp .sticky-cta .s-line { background: #06c755; color: #fff !important; }
   #crastore-lp .cl-footer { padding-bottom: 104px; }
 }
 @media (max-width: 720px) {
@@ -497,7 +491,6 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   #crastore-lp .cat { padding: 24px 22px 20px; }
   #crastore-lp .sec-cta .btn-primary { width: 100%; padding: 16px 18px; font-size: 16px; }
 }
-
 /* ===== 船の内装工事ページ専用 ===== */
 #crastore-lp .sub-hero { padding: 120px 0 64px; }
 #crastore-lp .crumb { display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: #a8b0ba; margin-bottom: 18px; }
@@ -527,6 +520,107 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
   #crastore-lp .diff li { padding: 20px 20px 20px 58px; }
   #crastore-lp .diff li::before { left: 18px; }
 }
+
+/* =====================================================================
+   複数ページ版で追加した部品
+   ===================================================================== */
+@media (min-width: 1081px) { #crastore-lp .gnav { gap: 20px; } }
+#crastore-lp .svc-icon {
+  width: 52px; height: 52px; border-radius: 14px; flex: none;
+  background: rgba(240,131,0,.12); color: var(--accent-deep);
+  display: grid; place-items: center;
+}
+#crastore-lp .svc-icon svg { width: 28px; height: 28px; }
+#crastore-lp .cat h3 a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+#crastore-lp .cat .cat-more { position: relative; }
+
+/* 火災保険への導線バナー */
+#crastore-lp .ins-banner {
+  margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px;
+  background: var(--ink); color: #fff; border-radius: var(--radius); padding: 24px 30px;
+}
+#crastore-lp .ins-banner .t { font-family: var(--font-head); font-weight: 800; font-size: clamp(18px, 2.2vw, 22px); letter-spacing: .04em; line-height: 1.6; }
+#crastore-lp .ins-banner .d { font-size: 14.5px; color: #c0c7d0; margin-top: 4px; }
+#crastore-lp .ins-banner .go {
+  flex: none; display: inline-flex; align-items: center; gap: 8px;
+  border: 1.5px solid rgba(255,255,255,.5); border-radius: 999px; padding: 11px 24px;
+  font-weight: 700; font-size: 15px; color: #fff !important; transition: background .2s, border-color .2s;
+}
+#crastore-lp .ins-banner .go:hover { background: rgba(255,255,255,.08); border-color: #fff; }
+
+/* 選ばれる理由 */
+#crastore-lp .reasons { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+#crastore-lp .reasons li { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px; }
+#crastore-lp .reasons .n { font-family: var(--font-en); font-weight: 800; font-size: 30px; line-height: 1; color: var(--accent-deep); }
+#crastore-lp .reasons h3 { font-size: 18px; font-weight: 800; line-height: 1.6; margin: 12px 0 6px; color: inherit; }
+#crastore-lp .reasons p { font-size: 15px; color: var(--muted); line-height: 1.85; }
+
+/* 下層ページの見出しまわり */
+#crastore-lp .sub-hero h1 { font-size: clamp(28px, 4.4vw, 44px); }
+#crastore-lp .sub-hero .hero-lead { max-width: 36em; }
+#crastore-lp .price-inline {
+  margin-top: 20px; display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+  background: rgba(240,131,0,.12); border: 1px solid rgba(240,131,0,.45); border-radius: 12px; padding: 10px 18px;
+}
+#crastore-lp .price-inline b { font-family: var(--font-en); font-weight: 800; font-size: 26px; color: var(--accent); }
+#crastore-lp .price-inline span { font-size: 14px; color: #c9cfd6; }
+
+/* 2列の説明ブロック（火災保険） */
+#crastore-lp .two-col { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+#crastore-lp .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 28px; }
+#crastore-lp .card h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; line-height: 1.6; color: inherit; }
+#crastore-lp .card .chips { margin-top: 12px; }
+
+/* 他の事業（関連ページ） */
+#crastore-lp .related { margin-top: 26px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+#crastore-lp .related a {
+  display: flex; align-items: center; gap: 14px; background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px 20px; font-weight: 700; font-size: 16px; line-height: 1.5;
+  transition: box-shadow .25s, transform .25s, border-color .25s;
+}
+#crastore-lp .related a:hover { box-shadow: 0 12px 30px rgba(20,23,28,.10); transform: translateY(-2px); border-color: transparent; }
+#crastore-lp .related .svc-icon { width: 44px; height: 44px; border-radius: 12px; }
+#crastore-lp .related .svc-icon svg { width: 24px; height: 24px; }
+#crastore-lp .related small { display: block; font-size: 13px; font-weight: 500; color: var(--muted); }
+
+/* お問い合わせページ：3つの窓口 */
+#crastore-lp .ways { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+#crastore-lp .way { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 26px 26px; }
+#crastore-lp .way.is-main { border: 2px solid var(--accent); }
+#crastore-lp .way .k { font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--accent-deep); }
+#crastore-lp .way h3 { font-family: var(--font-head); font-size: 21px; font-weight: 800; letter-spacing: .04em; margin: 6px 0 8px; line-height: 1.5; color: inherit; }
+#crastore-lp .way p { font-size: 15px; color: var(--muted); line-height: 1.85; }
+#crastore-lp .way .act { margin-top: auto; padding-top: 18px; }
+#crastore-lp .way .btn-primary { width: 100%; padding: 15px 18px; font-size: 16px; }
+#crastore-lp .way .tel-big { font-family: var(--font-en); font-weight: 800; font-size: 28px; letter-spacing: .03em; color: var(--ink) !important; }
+#crastore-lp .way .tel-big + small { display: block; font-size: 13px; color: var(--muted); }
+#crastore-lp .way .act img { display: block; height: 40px; width: auto; }
+#crastore-lp .check-list { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; max-width: 860px; }
+#crastore-lp .check-list li { position: relative; padding-left: 30px; font-size: 15.5px; line-height: 1.75; }
+#crastore-lp .check-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent-deep); font-weight: 900; }
+#crastore-lp .check-list li span { display: block; font-size: 13.5px; color: var(--muted); }
+
+/* 会社概要：地図 */
+#crastore-lp .map { margin-top: 22px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--bg-soft); }
+#crastore-lp .map iframe { display: block; width: 100%; height: 340px; border: 0; }
+
+@media (max-width: 1000px) {
+  #crastore-lp .reasons, #crastore-lp .related, #crastore-lp .ways { grid-template-columns: 1fr; }
+  #crastore-lp .two-col { grid-template-columns: 1fr; }
+}
+@media (max-width: 1080px) {
+  #crastore-lp .gnav a[aria-current="page"] { box-shadow: inset 4px 0 0 var(--accent); }
+}
+@media (max-width: 640px) {
+  #crastore-lp .check-list { grid-template-columns: 1fr; }
+  #crastore-lp .ins-banner { padding: 22px 22px; }
+  #crastore-lp .ins-banner .go { width: 100%; justify-content: center; }
+  #crastore-lp .map iframe { height: 260px; }
+}
+#crastore-lp section.related-sec { border-top: 1px solid var(--line); }
+#crastore-lp .sticky-cta a { white-space: nowrap; }
+#crastore-lp .sticky-cta .sub { letter-spacing: 0; }
+@media (max-width: 360px) { #crastore-lp .sticky-cta a { font-size: 14px; padding: 11px 4px; } #crastore-lp .sticky-cta .sub { font-size: 10px; } }
 </style>
 
 <div id="crastore-lp">
@@ -536,16 +630,18 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
     <a href="https://crastore.xyz/" class="logotype" aria-label="株式会社Crastore ホーム">CRA<span class="s">S</span>TORE</a>
     <button class="menu-btn" id="clMenuBtn" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="clGnav"><span></span><span></span><span></span></button>
     <nav class="gnav" id="clGnav" aria-label="メインメニュー">
-      <a href="https://crastore.xyz/#business">事業内容</a>
-      <a href="#works">対応できる工事</a>
-      <a href="#points">船ならではの配慮</a>
-      <a href="#flow">ご依頼の流れ</a>
-      <a href="#faq">Q&amp;A</a>
+      <a href="https://crastore.xyz/building/">建築</a>
+      <a href="https://crastore.xyz/fire-insurance/">火災保険</a>
+      <a href="https://crastore.xyz/ship-interior/">船の内装</a>
+      <a href="https://crastore.xyz/rust-proofing/">錆止め</a>
+      <a href="https://crastore.xyz/deodorize/">除菌・消臭</a>
+      <a href="https://crastore.xyz/company/">会社概要</a>
+      <a href="https://crastore.xyz/contact/">お問い合わせ</a>
       <a class="head-tel" href="tel:05037003996">
         <span class="num">050-3700-3996</span>
         <span class="sub">受付 9:00〜17:00</span>
       </a>
-      <a class="btn-cta" href="https://staffpro.jp/" target="_blank" rel="noopener">無料で相談<span class="sr-only">（別ウィンドウで開きます）</span></a>
+      <a class="btn-cta" href="https://staffpro.jp/" target="_blank" rel="noopener">無料見積り<span class="sr-only">（別ウィンドウで開きます）</span></a>
     </nav>
   </div>
 </header>
@@ -553,15 +649,19 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 <main>
 
   <!-- Hero -->
-  <section class="hero sub-hero" id="top" aria-labelledby="heroTitle">
+  <section class="hero" id="top" aria-labelledby="heroTitle">
     <div class="wrap hero-inner">
-      <nav class="crumb" aria-label="パンくずリスト"><a href="https://crastore.xyz/">ホーム</a><span aria-hidden="true">›</span><span>船の内装工事</span></nav>
-      <p class="hero-tag">船舶の内装・外装工事｜大阪</p>
-      <h1 id="heroTitle">船の内装工事・<br><span class="accent">船室のリフォーム</span></h1>
+      <p class="hero-tag">大阪・船場の建設会社</p>
+      <h1 id="heroTitle">建物も、船も、<br><span class="accent">室内の空気も。</span></h1>
       <p class="hero-lead">
-        船室の床・壁・天井の張り替えから、収納や建具の取り付け、船の外部の工事まで。
-        Crastore(クラストア)は、建物の内装工事で培った技術で、湿気・揺れ・限られた空間といった船ならではの条件に合わせて施工します。
+        建物の改修・修繕、船の内装・外装工事、錆止め、室内の除菌・消臭。
+        「どこに頼めばいいか分からない」工事を、写真1枚からお引き受けします。
       </p>
+      <a class="hero-news" href="https://crastore.xyz/rust-proofing/">
+        <span class="new">NEW</span>
+        <span class="t">錆止め施工はじめました</span>
+        <span class="p">5,500円<small>／㎡（税込6,050円）</small></span>
+      </a>
       <div class="hero-actions">
         <a class="btn-primary" href="https://staffpro.jp/" target="_blank" rel="noopener">写真を送って無料見積り<span class="sr-only">（別ウィンドウで開きます）</span></a>
         <a class="btn-tel-hero" href="tel:05037003996">
@@ -570,166 +670,125 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
         </a>
       </div>
       <p class="cta-note">
-        <span><span class="ck" aria-hidden="true">✓</span>現地確認・見積りまで無料</span>
-        <span><span class="ck" aria-hidden="true">✓</span>一部分の補修からご相談OK</span>
+        <span><span class="ck" aria-hidden="true">✓</span>相談・現地調査・見積りまで無料</span>
         <span><span class="ck" aria-hidden="true">✓</span>見積り後のお断りOK</span>
+        <span><span class="ck" aria-hidden="true">✓</span>LINEでも相談できます</span>
       </p>
     </div>
   </section>
 
-  <!-- 対応できる工事 -->
-  <section id="works" aria-labelledby="worksTitle">
+  <!-- 事業 -->
+  <section id="business" aria-labelledby="bizTitle">
     <div class="wrap">
-      <p class="sec-label">Works</p>
-      <h2 class="sec-title" id="worksTitle">対応できる船の内装工事</h2>
-      <p class="sec-lead">船室まるごとの改装から、床の一部・壁の剥がれ一か所の補修まで。必要な範囲だけをご提案します。</p>
-      <!-- ▼要確認: 実際に対応する工事だけを残してください。対応していない項目は削除し、得意な工事があれば追記してください -->
-      <div class="work-grid">
-        <div class="work reveal">
-          <h3>床の張り替え</h3>
-          <p>フロア材・クッションフロア・カーペットなど。水濡れや塩分に強い床材を選び、下地の傷みも確認します。</p>
+      <p class="sec-label">Business</p>
+      <h2 class="sec-title" id="bizTitle">ご相談の内容から選んでください</h2>
+      <div class="cats">
+        <a class="cat reveal" href="https://crastore.xyz/building/">
+          <div class="cat-head"><span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/></svg></span><div><p class="cat-num">01</p><h3>建築工事・リフォーム</h3></div></div>
+          <p>改修・リフォーム、水まわり、原状回復、壁一か所の補修まで。他社で断られた工事もご相談ください。</p>
+          <span class="cat-more">建築工事について →</span>
+        </a>
+        <a class="cat reveal" href="https://crastore.xyz/ship-interior/">
+          <div class="cat-head"><span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15h20l-3 5H5z"/><path d="M12 3v12"/><path d="M12 4l7 8h-7"/></svg></span><div><p class="cat-num">02</p><h3>船の内装・外装工事</h3></div></div>
+          <p>船室の床・壁・天井の張り替え、収納の取り付けから、船の外部の工事まで。湿気や揺れなど船の条件に合わせて施工します。</p>
+          <span class="cat-more">船の内装工事について →</span>
+        </a>
+        <a class="cat is-new reveal" href="https://crastore.xyz/rust-proofing/">
+          <span class="cat-badge">NEW</span>
+          <div class="cat-head"><span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><div><p class="cat-num">03</p><h3>錆止め</h3></div></div>
+          <p>錆を塗料で覆うのではなく、錆そのものを変化させて再発を抑えます。錆止めだけのご依頼OK。</p>
+          <p class="cat-price"><b>5,500</b>円／㎡ <small>（税込6,050円）</small></p>
+          <span class="cat-more">錆止めについて →</span>
+        </a>
+        <a class="cat reveal" href="https://crastore.xyz/deodorize/">
+          <div class="cat-head"><span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M18 14.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg></span><div><p class="cat-num">04</p><h3>室内の除菌・消臭</h3></div></div>
+          <p>タバコ・ペット・カビなど、通常の清掃では取れない臭い。退去後の部屋やご事情のある現場もご相談ください。</p>
+          <span class="cat-more">除菌・消臭について →</span>
+        </a>
+      </div>
+      <div class="ins-banner reveal">
+        <div>
+          <p class="t">台風・大雨で壊れた屋根や外壁は、<br>火災保険の対象になることがあります。</p>
+          <p class="d">判断するのは保険会社です。当社は被害の調査と、事実に基づく書類づくり、修繕を担当します。</p>
         </div>
-        <div class="work reveal">
-          <h3>壁・天井の張り替え</h3>
-          <p>内装パネル、クロス、化粧シートなどで張り替え。汚れや日焼け、剥がれで古びた船室の印象を一新します。</p>
-        </div>
-        <div class="work reveal">
-          <h3>収納・建具の取り付け</h3>
-          <p>限られた空間を生かす収納や、扉・建具の取り付けと調整。揺れで開かないよう固定方法まで考えて納めます。</p>
-        </div>
-        <div class="work reveal">
-          <h3>部分補修</h3>
-          <p>キズ、へこみ、剥がれ、湿気で傷んだ下地の補修。「ここだけ直したい」というご依頼も歓迎です。</p>
-        </div>
-        <div class="work reveal">
-          <h3>船の外部の工事</h3>
-          <p>デッキまわりなど、船の外まわりの補修にも対応します。内装とあわせてご相談いただけます。</p>
-        </div>
-        <div class="work reveal">
-          <h3>船室の改装プラン</h3>
-          <p>使い方に合わせたレイアウトや素材の組み合わせをご提案。内装をまとめて見直したい場合もご相談ください。</p>
-        </div>
+        <a class="go" href="https://crastore.xyz/fire-insurance/">火災保険を使った修繕 →</a>
       </div>
     </div>
   </section>
 
-  <!-- 船ならではの配慮 -->
-  <section class="soft" id="points" aria-labelledby="pointsTitle">
+  <!-- 選ばれる理由 -->
+  <section class="soft" id="reasons" aria-labelledby="reasonTitle">
     <div class="wrap">
-      <p class="sec-label">Points</p>
-      <h2 class="sec-title" id="pointsTitle">船の内装工事が、建物と違うところ</h2>
-      <p class="sec-lead">見た目は同じ床や壁でも、船の上では条件がまったく違います。建物と同じ感覚で施工すると、すぐに剥がれ・反り・カビの原因になります。</p>
-      <ol class="diff">
+      <p class="sec-label">Why Crastore</p>
+      <h2 class="sec-title" id="reasonTitle">Crastoreに頼む、3つの理由</h2>
+      <ul class="reasons">
         <li class="reveal">
-          <strong>湿気と塩分</strong>
-          <span>船内は湿気がこもりやすく、潮風の塩分も入り込みます。耐水性・防カビ性の高い材料を選び、張り替えの前に下地の腐食や傷みを確認します。</span>
+          <span class="n">01</span>
+          <h3>他社で断られた工事も、<br>まず聞きます</h3>
+          <p>「小さすぎる」「工種がまたがる」と断られた工事も、多工種の職人ネットワークで対応します。難しい場合は理由を正直にお伝えします。</p>
         </li>
         <li class="reveal">
-          <strong>揺れと振動</strong>
-          <span>航行中の揺れやエンジンの振動が常にかかります。材料の固定や接着の方法を選び、収納や建具は揺れで開かない・ガタつかない納まりにします。</span>
+          <span class="n">02</span>
+          <h3>写真1枚で、<br>見積りが始められます</h3>
+          <p>フォームでもLINEでも、気になる箇所の写真を送るだけ。現地調査・お見積りまで無料で、お断りいただいても構いません。</p>
         </li>
         <li class="reveal">
-          <strong>限られた空間と搬入口</strong>
-          <span>船室は狭く、入口も小さいのが普通です。現地で採寸し、搬入できる大きさに材料を分けて加工・施工します。</span>
+          <span class="n">03</span>
+          <h3>できること・できないことを、<br>はっきり言います</h3>
+          <p>火災保険が使えるか、錆がどこまで抑えられるか。分からないことを「大丈夫です」とは言いません。</p>
         </li>
-        <li class="reveal">
-          <strong>直角・水平ではない面</strong>
-          <span>船体の形に沿った曲面や傾きがあり、建物のように直角・水平ではありません。現場で一枚ずつ合わせながら納めます。</span>
-        </li>
-        <li class="reveal">
-          <strong>船の種類による内装材の基準</strong>
-          <span>船の種類や用途によっては、使える内装材に防火などの基準があります。必要に応じて船主様や造船所と確認しながら材料を選びます。</span>
-        </li>
-      </ol>
+      </ul>
     </div>
   </section>
 
-  <!-- ▼要確認: 施工事例はSEOと信頼の両方で最も効果があります。写真をWordPressのメディアにアップロードし、下のひな形を1件ずつ複製して使ってください
-  <section id="cases" aria-labelledby="casesTitle">
-    <div class="wrap">
-      <p class="sec-label">Cases</p>
-      <h2 class="sec-title" id="casesTitle">施工事例</h2>
-      <div class="case-grid">
-        <article class="case reveal">
-          <img src="ここに写真のURL" alt="（例）プレジャーボート船室の床と壁の張り替え 施工後" loading="lazy">
-          <h3>（例）プレジャーボートの船室　床・壁の張り替え</h3>
-          <p>船の種類：〇〇／工事内容：〇〇／工期：〇日／場所：大阪府〇〇</p>
-        </article>
-      </div>
-    </div>
-  </section>
-  -->
-
-  <!-- Flow -->
   <section id="flow" aria-labelledby="flowTitle">
     <div class="wrap">
       <p class="sec-label">Flow</p>
       <h2 class="sec-title" id="flowTitle">ご依頼の流れ</h2>
-      <p class="sec-lead">最初は、気になる箇所の写真と船の概要（種類・おおよその大きさ・係留場所）を送っていただくだけで大丈夫です。</p>
+      <p class="sec-lead">どの工事も、最初の一歩は写真を1枚送るだけです。</p>
       <div class="flow-grid">
         <div class="flow-step is-first reveal">
           <span class="tag">まずはここから</span>
-          <h3>写真と船の概要を送る</h3>
-          <p>フォーム・LINE・お電話で。写真があると概算をお出ししやすくなります。</p>
+          <h3>写真を送ってご相談</h3>
+          <p>フォーム・LINE・お電話で。気になる箇所の写真を送っていただくとスムーズです。</p>
         </div>
         <div class="flow-step reveal">
           <span class="tag">ここまで無料</span>
-          <h3>現地確認・お見積り</h3>
-          <p>船で採寸と下地の確認を行い、材料と内訳の分かるお見積りをご提示します。</p>
+          <h3>現地調査・お見積り</h3>
+          <p>内訳の分かるお見積りをご提示します。金額を見てお断りいただいて構いません。</p>
         </div>
         <div class="flow-step reveal">
-          <h3>施工</h3>
-          <p>船の使用予定に合わせて工程を組みます。作業日程は事前にご相談のうえ決めます。</p>
+          <h3>ご契約・施工</h3>
+          <p>ご納得いただいてから着工します。日程は事前にご相談のうえ決めます。</p>
         </div>
         <div class="flow-step reveal">
-          <h3>仕上がりの確認</h3>
-          <p>仕上がりを一緒にご確認いただいて完了です。使ってみて気になる点もご相談ください。</p>
+          <h3>お引き渡し</h3>
+          <p>仕上がりを一緒にご確認いただいて完了です。施工後のご相談も歓迎です。</p>
         </div>
-      </div>
-      <!-- ▼要確認: 作業場所（陸揚げ中・係留中のどちらに対応するか）、対応エリア（係留港）、対応できる船の種類・大きさを追記してください -->
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="soft" id="faq" aria-labelledby="faqTitle">
-    <div class="wrap">
-      <p class="sec-label">Q&amp;A</p>
-      <h2 class="sec-title" id="faqTitle">船の内装工事のよくあるご質問</h2>
-      <div class="faq-list">
-        <details open>
-          <summary>床の一部や、壁一か所だけの補修でも頼めますか？</summary>
-          <div class="ans">はい、承ります。船室全体の改装でなくても、傷んだ部分だけの補修からご相談いただけます。ほかに気になる箇所があれば、まとめて施工したほうが費用を抑えられる場合もあります。</div>
-        </details>
-        <details>
-          <summary>船の内装工事の費用はどれくらいですか？</summary>
-          <div class="ans">船の大きさ、張り替える範囲、使う材料によって大きく変わります。写真とおおよその寸法をお送りいただければ概算をお伝えし、現地で採寸したうえで正式なお見積りをお出しします。お見積りまでは無料です。</div>
-        </details>
-        <details>
-          <summary>建物の内装業者に、船の工事を頼んで大丈夫ですか？</summary>
-          <div class="ans">船は湿気・塩分・揺れ・曲面など、建物とは条件が大きく違います。当社はその違いを前提に、材料の選定と固定方法、現地での採寸と加工を行います。船の種類によって内装材の基準がある場合は、船主様や造船所と確認しながら進めます。</div>
-        </details>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
   <section class="contact" id="contact" aria-labelledby="contactTitle">
     <div class="wrap">
       <p class="sec-label">Contact</p>
-      <h2 class="sec-title" id="contactTitle">船の内装、まずは写真1枚からご相談ください。</h2>
-      <p class="sec-lead">床の張り替え一か所から、船室まるごとの改装まで。現地確認とお見積りは無料です。</p>
+      <h2 class="sec-title" id="contactTitle">「これって直る？」から、始めましょう。</h2>
+      <p class="sec-lead">建物、船、錆、室内の臭い。どのご相談も、写真1枚から受け付けています。</p>
       <div class="contact-actions">
-        <a class="btn-primary" href="https://staffpro.jp/" target="_blank" rel="noopener">お問い合わせ（24時間受付）<span class="sr-only">（別ウィンドウで開きます）</span></a>
+        <a class="btn-primary" href="https://staffpro.jp/" target="_blank" rel="noopener">写真を送って無料見積り（24時間受付）<span class="sr-only">（別ウィンドウで開きます）</span></a>
         <a class="contact-tel" href="tel:05037003996">
           <span class="num">050-3700-3996</span>
           <span class="hours">受付 9:00〜17:00</span>
         </a>
       </div>
-      <p class="line-cta"><span>LINEでも、写真を送って気軽にご相談いただけます。</span><a href="https://lin.ee/qeO2S0T" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a></p>
-      <p class="ig-line">ほかの事業（建築・錆止め・除菌消臭）は <a href="https://crastore.xyz/#business">トップページ</a> をご覧ください。</p>
+      <p class="line-cta"><span>LINEでも、写真を送って気軽にご相談いただけます。</span><a href="https://lin.ee/qeO2S0T" target="_blank" rel="noopener"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="LINEで友だち追加" height="36" border="0"></a></p>
+      <p class="cta-note">
+        <span><span class="ck" aria-hidden="true">✓</span>相談・現地調査・見積りまで無料</span>
+        <span><span class="ck" aria-hidden="true">✓</span>見積り後のお断りOK</span>
+        <span><span class="ck" aria-hidden="true">✓</span>しつこい営業なし</span>
+      </p>
     </div>
   </section>
-
 </main>
 
 <footer class="cl-footer">
@@ -737,6 +796,7 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
     <div>
       <p class="logotype">CRA<span class="s">S</span>TORE</p>
       <p class="footer-info">
+        株式会社Crastore（クラストア）<br>
         〒541-0057 大阪市中央区北久宝寺町2-6-10-404<br>
         TEL <a href="tel:05037003996">050-3700-3996</a>（受付 9:00〜17:00）<br>
         Instagram <a href="https://www.instagram.com/crastore_inc/" target="_blank" rel="noopener">@crastore_inc</a>
@@ -745,56 +805,64 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
     </div>
     <nav class="footer-nav" aria-label="フッターメニュー">
       <a href="https://crastore.xyz/">ホーム</a>
-      <a href="https://crastore.xyz/#building">建築</a>
+      <a href="https://crastore.xyz/building/">建築工事・リフォーム</a>
+      <a href="https://crastore.xyz/fire-insurance/">火災保険を使った修繕</a>
       <a href="https://crastore.xyz/ship-interior/">船の内装工事</a>
-      <a href="https://crastore.xyz/#rust">錆止め</a>
-      <a href="https://crastore.xyz/#clean">除菌・消臭</a>
-      <a href="https://crastore.xyz/#company">会社概要</a>
-      <a href="https://staffpro.jp/" target="_blank" rel="noopener">お問い合わせ</a>
+      <a href="https://crastore.xyz/rust-proofing/">錆止め</a>
+      <a href="https://crastore.xyz/deodorize/">室内の除菌・消臭</a>
+      <a href="https://crastore.xyz/company/">会社概要</a>
+      <a href="https://crastore.xyz/contact/">お問い合わせ</a>
     </nav>
   </div>
 </footer>
 
-<!-- スマホ用の追従CTA（電話 / 相談） -->
+<!-- スマホ用の追従ボタン（電話 / LINE / 見積り） -->
 <div class="sticky-cta">
-  <a class="s-tel" href="tel:05037003996"><span class="num">050-3700-3996</span><span class="sub">電話で相談</span></a>
-  <a class="s-form" href="https://staffpro.jp/" target="_blank" rel="noopener">写真を送って無料見積り<span class="sub">24時間受付</span></a>
+  <a class="s-tel" href="tel:05037003996">電話で相談<span class="sub">050-3700-3996</span></a>
+  <a class="s-line" href="https://lin.ee/qeO2S0T" target="_blank" rel="noopener">LINE<span class="sub">気軽に相談</span></a>
+  <a class="s-form" href="https://staffpro.jp/" target="_blank" rel="noopener">無料見積り<span class="sub">写真を送る・24時間</span></a>
 </div>
 
 </div>
 
-<!-- 検索エンジン向けの構造化データ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
+  "@type": "GeneralContractor",
+  "@id": "https://crastore.xyz/#org",
+  "name": "株式会社Crastore",
+  "alternateName": "株式会社クラストア",
+  "url": "https://crastore.xyz/",
+  "telephone": "+81-50-3700-3996",
+  "sameAs": [
+    "https://www.instagram.com/crastore_inc/"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "北久宝寺町2-6-10-404",
+    "addressLocality": "大阪市中央区",
+    "addressRegion": "大阪府",
+    "postalCode": "541-0057",
+    "addressCountry": "JP"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "大阪府"
+  },
+  "description": "大阪・船場の建設会社、株式会社Crastore（クラストア）。建物の改修・修繕、火災保険を使った修繕、船の内装・外装工事、錆を変化させて再発を抑える錆止め、室内の除菌・消臭に対応。写真1枚から無料でお見積りします。",
+  "openingHoursSpecification": [
     {
-      "@type": "Service",
-      "name": "船の内装工事・船室のリフォーム",
-      "serviceType": "船舶内装工事",
-      "description": "船室の床・壁・天井の張り替え、収納・建具の取り付け、部分補修、船の外部の工事。湿気・塩分・揺れ・曲面など船ならではの条件に合わせて施工します。",
-      "areaServed": { "@type": "AdministrativeArea", "name": "大阪府" },
-      "provider": {
-        "@type": "GeneralContractor",
-        "name": "株式会社Crastore",
-        "url": "https://crastore.xyz/",
-        "telephone": "+81-50-3700-3996",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "北久宝寺町2-6-10-404",
-          "addressLocality": "大阪市中央区",
-          "addressRegion": "大阪府",
-          "postalCode": "541-0057",
-          "addressCountry": "JP"
-        }
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://crastore.xyz/" },
-        { "@type": "ListItem", "position": 2, "name": "船の内装工事", "item": "https://crastore.xyz/ship-interior/" }
-      ]
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "17:00"
     }
   ]
 }
@@ -863,6 +931,3 @@ body.admin-bar #crastore-lp .cl-header { top: 32px; }
 })();
 </script>
 <!-- /wp:html -->
-
-</body>
-</html>

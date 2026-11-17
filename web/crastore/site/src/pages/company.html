@@ -1,0 +1,65 @@
+
+  <section class="hero sub-hero" id="top" aria-labelledby="heroTitle">
+    <div class="wrap hero-inner">
+      {{crumb}}
+      <p class="hero-tag">Company</p>
+      <h1 id="heroTitle">会社概要</h1>
+      <p class="hero-lead">株式会社Crastore（クラストア）は、大阪・船場に拠点を置く建設会社です。建物、船、錆、室内の環境まで、「どこに頼めばいいか分からない」工事の窓口でありたいと考えています。</p>
+    </div>
+  </section>
+
+  <section id="policy" aria-labelledby="policyTitle">
+    <div class="wrap">
+      <p class="sec-label">Policy</p>
+      <h2 class="sec-title" id="policyTitle">私たちが大切にしていること</h2>
+      <ul class="reasons">
+        <li class="reveal">
+          <span class="n">01</span>
+          <h3>小さな工事も、断らない</h3>
+          <p>壁のキズ一か所、蛇口一つの交換。規模の大小で仕事を選ばず、困っている方のご相談をまず伺います。</p>
+        </li>
+        <li class="reveal">
+          <span class="n">02</span>
+          <h3>事実に基づいて説明する</h3>
+          <p>できること・できないこと、保険の対象になりそうかどうか。根拠のないお約束はせず、分かっていることを正直にお伝えします。</p>
+        </li>
+        <li class="reveal">
+          <span class="n">03</span>
+          <h3>相談しやすくする</h3>
+          <p>写真1枚、LINEのひと言からで構いません。現地調査・お見積りまで無料で、しつこい営業もいたしません。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="soft" id="company" aria-labelledby="companyTitle">
+    <div class="wrap">
+      <p class="sec-label">Profile</p>
+      <h2 class="sec-title" id="companyTitle">会社情報</h2>
+      <div class="table-scroll reveal">
+        <table class="company-table">
+          <tbody>
+            <tr><th scope="row">会社名</th><td>株式会社Crastore（クラストア）</td></tr>
+            <tr><th scope="row">所在地</th><td>〒541-0057 大阪市中央区北久宝寺町2-6-10-404</td></tr>
+            <tr><th scope="row">TEL</th><td><a href="{{tellink}}">{{tel}}</a></td></tr>
+            <tr><th scope="row">営業時間</th><td>9:00〜17:00</td></tr>
+            <tr><th scope="row">対応エリア</th><td>大阪府を中心に対応<!-- ▼要確認: 実際の対応範囲に合わせて書き換えてください --></td></tr>
+            <tr><th scope="row">事業内容</th><td>
+              <a href="{{url:building}}">建築工事・リフォーム</a>（改修・水まわり・原状回復・部分補修）<br>
+              <a href="{{url:fire-insurance}}">火災保険を使った建物の修繕</a>（被害調査・書類作成・施工）<br>
+              <a href="{{url:ship-interior}}">船の内装・外装工事</a><br>
+              <a href="{{url:rust-proofing}}">錆止め施工</a>（錆を変化させて再発を抑える工法）<br>
+              <a href="{{url:deodorize}}">室内の除菌・消臭</a>
+            </td></tr>
+            <tr><th scope="row">登録</th><td>適格請求書発行事業者（登録番号 T9122001026672）</td></tr>
+            <tr><th scope="row">Instagram</th><td><a href="{{instagram}}" target="_blank" rel="noopener">@crastore_inc</a>（施工の様子を公開しています）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="map">
+        <iframe title="株式会社Crastoreの所在地（Googleマップ）" src="https://maps.google.com/maps?q=%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8C%97%E4%B9%85%E5%AE%9D%E5%AF%BA%E7%94%BA2-6-10&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  {{cta:お問い合わせは、お気軽に。||建物、船、錆、室内の臭い。どのご相談も、写真1枚から受け付けています。}}
